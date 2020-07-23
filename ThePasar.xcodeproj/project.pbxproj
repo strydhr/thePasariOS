@@ -3,19 +3,40 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		89C8067A15F20885617AB314 /* Pods_ThePasar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849F19812C1577C01AC9A928 /* Pods_ThePasar.framework */; };
+		D24A90E824C965C800BC726F /* SignupProfileImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24A90E724C965C800BC726F /* SignupProfileImageVC.swift */; };
+		D24C4CB124C7F094005F27E4 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24C4CAF24C7F094005F27E4 /* SignUpVC.swift */; };
+		D24C4CB224C7F094005F27E4 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24C4CB024C7F094005F27E4 /* LoginVC.swift */; };
+		D24C4CB724C7F346005F27E4 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24C4CB424C7F345005F27E4 /* RoundButton.swift */; };
+		D24C4CB824C7F346005F27E4 /* RoundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24C4CB524C7F345005F27E4 /* RoundImage.swift */; };
+		D24C4CB924C7F346005F27E4 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24C4CB624C7F346005F27E4 /* ImageCache.swift */; };
+		D24C4CBC24C7F409005F27E4 /* AuthServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24C4CBB24C7F409005F27E4 /* AuthServices.swift */; };
+		D24C4CBF24C82057005F27E4 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24C4CBE24C82057005F27E4 /* Constant.swift */; };
 		D270EC8124C6C42100C9B3A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D270EC8024C6C42100C9B3A7 /* AppDelegate.swift */; };
 		D270EC8324C6C42100C9B3A7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D270EC8224C6C42100C9B3A7 /* SceneDelegate.swift */; };
 		D270EC8524C6C42100C9B3A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D270EC8424C6C42100C9B3A7 /* ViewController.swift */; };
 		D270EC8824C6C42200C9B3A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D270EC8624C6C42200C9B3A7 /* Main.storyboard */; };
 		D270EC8A24C6C43900C9B3A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D270EC8924C6C43900C9B3A7 /* Assets.xcassets */; };
 		D270EC8D24C6C43900C9B3A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D270EC8B24C6C43900C9B3A7 /* LaunchScreen.storyboard */; };
+		D270EC9524C6C5AA00C9B3A7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D270EC9424C6C5AA00C9B3A7 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		366837CEE764D81C2E67E99C /* Pods-ThePasar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThePasar.debug.xcconfig"; path = "Target Support Files/Pods-ThePasar/Pods-ThePasar.debug.xcconfig"; sourceTree = "<group>"; };
+		3D64DD778F8A139DC76AE048 /* Pods-ThePasar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThePasar.release.xcconfig"; path = "Target Support Files/Pods-ThePasar/Pods-ThePasar.release.xcconfig"; sourceTree = "<group>"; };
+		849F19812C1577C01AC9A928 /* Pods_ThePasar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ThePasar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D24A90E724C965C800BC726F /* SignupProfileImageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupProfileImageVC.swift; sourceTree = "<group>"; };
+		D24C4CAF24C7F094005F27E4 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		D24C4CB024C7F094005F27E4 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		D24C4CB424C7F345005F27E4 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		D24C4CB524C7F345005F27E4 /* RoundImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundImage.swift; sourceTree = "<group>"; };
+		D24C4CB624C7F346005F27E4 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		D24C4CBB24C7F409005F27E4 /* AuthServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthServices.swift; sourceTree = "<group>"; };
+		D24C4CBE24C82057005F27E4 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		D270EC7D24C6C42100C9B3A7 /* ThePasar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThePasar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D270EC8024C6C42100C9B3A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D270EC8224C6C42100C9B3A7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +45,8 @@
 		D270EC8924C6C43900C9B3A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D270EC8C24C6C43900C9B3A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D270EC8E24C6C43900C9B3A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D270EC9424C6C5AA00C9B3A7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D270EC9A24C6E90800C9B3A7 /* Santana.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Santana.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +54,55 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89C8067A15F20885617AB314 /* Pods_ThePasar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3BA895C688A6BCD5002A243E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				366837CEE764D81C2E67E99C /* Pods-ThePasar.debug.xcconfig */,
+				3D64DD778F8A139DC76AE048 /* Pods-ThePasar.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D24C4CB324C7F308005F27E4 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D24C4CB624C7F346005F27E4 /* ImageCache.swift */,
+				D24C4CB424C7F345005F27E4 /* RoundButton.swift */,
+				D24C4CB524C7F345005F27E4 /* RoundImage.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		D24C4CBA24C7F3F3005F27E4 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D24C4CBB24C7F409005F27E4 /* AuthServices.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D24C4CBD24C8203C005F27E4 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				D24C4CBE24C82057005F27E4 /* Constant.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		D270EC7424C6C42100C9B3A7 = {
 			isa = PBXGroup;
 			children = (
 				D270EC7F24C6C42100C9B3A7 /* ThePasar */,
 				D270EC7E24C6C42100C9B3A7 /* Products */,
+				3BA895C688A6BCD5002A243E /* Pods */,
+				EF1219171A9E2362A9C4AD3A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +117,13 @@
 		D270EC7F24C6C42100C9B3A7 /* ThePasar */ = {
 			isa = PBXGroup;
 			children = (
+				D24C4CBD24C8203C005F27E4 /* Utilities */,
+				D24C4CBA24C7F3F3005F27E4 /* Services */,
+				D24C4CB324C7F308005F27E4 /* Extension */,
+				D270EC9924C6E8B400C9B3A7 /* Font */,
+				D270EC9824C6CECC00C9B3A7 /* View */,
+				D270EC9724C6CEAD00C9B3A7 /* Model */,
+				D270EC9624C6CE9E00C9B3A7 /* Controller */,
 				D270EC8024C6C42100C9B3A7 /* AppDelegate.swift */,
 				D270EC8224C6C42100C9B3A7 /* SceneDelegate.swift */,
 				D270EC8424C6C42100C9B3A7 /* ViewController.swift */,
@@ -63,8 +131,49 @@
 				D270EC8924C6C43900C9B3A7 /* Assets.xcassets */,
 				D270EC8B24C6C43900C9B3A7 /* LaunchScreen.storyboard */,
 				D270EC8E24C6C43900C9B3A7 /* Info.plist */,
+				D270EC9424C6C5AA00C9B3A7 /* GoogleService-Info.plist */,
 			);
 			path = ThePasar;
+			sourceTree = "<group>";
+		};
+		D270EC9624C6CE9E00C9B3A7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D24C4CB024C7F094005F27E4 /* LoginVC.swift */,
+				D24C4CAF24C7F094005F27E4 /* SignUpVC.swift */,
+				D24A90E724C965C800BC726F /* SignupProfileImageVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D270EC9724C6CEAD00C9B3A7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D270EC9824C6CECC00C9B3A7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D270EC9924C6E8B400C9B3A7 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				D270EC9A24C6E90800C9B3A7 /* Santana.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		EF1219171A9E2362A9C4AD3A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				849F19812C1577C01AC9A928 /* Pods_ThePasar.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +183,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D270EC9124C6C43900C9B3A7 /* Build configuration list for PBXNativeTarget "ThePasar" */;
 			buildPhases = (
+				8F012C4950EFC32B83504675 /* [CP] Check Pods Manifest.lock */,
 				D270EC7924C6C42100C9B3A7 /* Sources */,
 				D270EC7A24C6C42100C9B3A7 /* Frameworks */,
 				D270EC7B24C6C42100C9B3A7 /* Resources */,
+				017CEEF1A190491164C9D8D2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -125,6 +236,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D270EC9524C6C5AA00C9B3A7 /* GoogleService-Info.plist in Resources */,
 				D270EC8D24C6C43900C9B3A7 /* LaunchScreen.storyboard in Resources */,
 				D270EC8A24C6C43900C9B3A7 /* Assets.xcassets in Resources */,
 				D270EC8824C6C42200C9B3A7 /* Main.storyboard in Resources */,
@@ -133,14 +245,64 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		017CEEF1A190491164C9D8D2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ThePasar/Pods-ThePasar-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ThePasar/Pods-ThePasar-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ThePasar/Pods-ThePasar-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8F012C4950EFC32B83504675 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ThePasar-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D270EC7924C6C42100C9B3A7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D24C4CB724C7F346005F27E4 /* RoundButton.swift in Sources */,
+				D24C4CB124C7F094005F27E4 /* SignUpVC.swift in Sources */,
+				D24A90E824C965C800BC726F /* SignupProfileImageVC.swift in Sources */,
+				D24C4CB924C7F346005F27E4 /* ImageCache.swift in Sources */,
 				D270EC8524C6C42100C9B3A7 /* ViewController.swift in Sources */,
 				D270EC8124C6C42100C9B3A7 /* AppDelegate.swift in Sources */,
 				D270EC8324C6C42100C9B3A7 /* SceneDelegate.swift in Sources */,
+				D24C4CBC24C7F409005F27E4 /* AuthServices.swift in Sources */,
+				D24C4CBF24C82057005F27E4 /* Constant.swift in Sources */,
+				D24C4CB824C7F346005F27E4 /* RoundImage.swift in Sources */,
+				D24C4CB224C7F094005F27E4 /* LoginVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,11 +444,13 @@
 		};
 		D270EC9224C6C43900C9B3A7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 366837CEE764D81C2E67E99C /* Pods-ThePasar.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 93SA3SA2TF;
 				INFOPLIST_FILE = ThePasar/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -300,11 +464,13 @@
 		};
 		D270EC9324C6C43900C9B3A7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D64DD778F8A139DC76AE048 /* Pods-ThePasar.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 93SA3SA2TF;
 				INFOPLIST_FILE = ThePasar/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
