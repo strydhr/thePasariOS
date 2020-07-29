@@ -16,6 +16,8 @@
 		D24C4CB924C7F346005F27E4 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24C4CB624C7F346005F27E4 /* ImageCache.swift */; };
 		D24C4CBC24C7F409005F27E4 /* AuthServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24C4CBB24C7F409005F27E4 /* AuthServices.swift */; };
 		D24C4CBF24C82057005F27E4 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24C4CBE24C82057005F27E4 /* Constant.swift */; };
+		D24EF9C724CA9792005937C5 /* MainTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24EF9C624CA9792005937C5 /* MainTabVC.swift */; };
+		D24EF9C924CA9FFC005937C5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24EF9C824CA9FFC005937C5 /* User.swift */; };
 		D270EC8124C6C42100C9B3A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D270EC8024C6C42100C9B3A7 /* AppDelegate.swift */; };
 		D270EC8324C6C42100C9B3A7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D270EC8224C6C42100C9B3A7 /* SceneDelegate.swift */; };
 		D270EC8524C6C42100C9B3A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D270EC8424C6C42100C9B3A7 /* ViewController.swift */; };
@@ -37,6 +39,8 @@
 		D24C4CB624C7F346005F27E4 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		D24C4CBB24C7F409005F27E4 /* AuthServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthServices.swift; sourceTree = "<group>"; };
 		D24C4CBE24C82057005F27E4 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		D24EF9C624CA9792005937C5 /* MainTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabVC.swift; sourceTree = "<group>"; };
+		D24EF9C824CA9FFC005937C5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D270EC7D24C6C42100C9B3A7 /* ThePasar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThePasar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D270EC8024C6C42100C9B3A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D270EC8224C6C42100C9B3A7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -142,6 +146,7 @@
 				D24C4CB024C7F094005F27E4 /* LoginVC.swift */,
 				D24C4CAF24C7F094005F27E4 /* SignUpVC.swift */,
 				D24A90E724C965C800BC726F /* SignupProfileImageVC.swift */,
+				D24EF9C624CA9792005937C5 /* MainTabVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -149,6 +154,7 @@
 		D270EC9724C6CEAD00C9B3A7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D24EF9C824CA9FFC005937C5 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -188,6 +194,7 @@
 				D270EC7A24C6C42100C9B3A7 /* Frameworks */,
 				D270EC7B24C6C42100C9B3A7 /* Resources */,
 				017CEEF1A190491164C9D8D2 /* [CP] Embed Pods Frameworks */,
+				3B05B33CE602715EDBC25564 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -263,6 +270,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ThePasar/Pods-ThePasar-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		3B05B33CE602715EDBC25564 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ThePasar/Pods-ThePasar-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ThePasar/Pods-ThePasar-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ThePasar/Pods-ThePasar-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		8F012C4950EFC32B83504675 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -292,6 +316,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D24EF9C924CA9FFC005937C5 /* User.swift in Sources */,
 				D24C4CB724C7F346005F27E4 /* RoundButton.swift in Sources */,
 				D24C4CB124C7F094005F27E4 /* SignUpVC.swift in Sources */,
 				D24A90E824C965C800BC726F /* SignupProfileImageVC.swift in Sources */,
@@ -299,6 +324,7 @@
 				D270EC8524C6C42100C9B3A7 /* ViewController.swift in Sources */,
 				D270EC8124C6C42100C9B3A7 /* AppDelegate.swift in Sources */,
 				D270EC8324C6C42100C9B3A7 /* SceneDelegate.swift in Sources */,
+				D24EF9C724CA9792005937C5 /* MainTabVC.swift in Sources */,
 				D24C4CBC24C7F409005F27E4 /* AuthServices.swift in Sources */,
 				D24C4CBF24C82057005F27E4 /* Constant.swift in Sources */,
 				D24C4CB824C7F346005F27E4 /* RoundImage.swift in Sources */,

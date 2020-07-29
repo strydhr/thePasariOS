@@ -25,9 +25,8 @@ class SignUpVC: UIViewController {
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     var btmHeight:CGFloat?
     
-    var username:String?
-    var email:String?
-    var password:String?
+    var fullname:String?
+
     
     
     override func viewDidLoad() {
@@ -88,19 +87,18 @@ class SignUpVC: UIViewController {
             
         }
     }
-//
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "signupTypeSegue"{
-//            let destination = segue.destination as! SignUpTypeVC
-//            destination.email = email
-//            destination.username = username
-//            destination.password = password
-//
-//        }
-//    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "signupProfileImageSegue"{
+            let destination = segue.destination as! SignupProfileImageVC
+            destination.fullname = fullname
+
+
+        }
+    }
     
     @IBAction func proceedBtnPressed(_ sender: UIButton) {
-//        errorHandler(username: usernameTF.text!, email: emailTF.text!, password: passwordTF.text!, confirmPassword: confrimPwTF.text!)
+        errorHandler(username: usernameTF.text!, email: emailTF.text!, password: passwordTF.text!, confirmPassword: confrimPwTF.text!)
     }
     @IBAction func termBtnPressed(_ sender: UIButton) {
         let urlWhats = "https://aohome675642161.wordpress.com/terms-and-conditions/"
@@ -154,11 +152,12 @@ extension SignUpVC: UITextFieldDelegate{
 
 extension SignUpVC{
     func initLayout(){
+        usernameTF.autocapitalizationType = .words
         usernameTF.layer.cornerRadius = 17
         usernameTF.layer.masksToBounds = true
         usernameTF.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         usernameTF.layer.borderWidth = 3
-        usernameTF.attributedPlaceholder = NSAttributedString(string: "Your Username", attributes: [NSAttributedString.Key.foregroundColor:UIColor.white])
+        usernameTF.attributedPlaceholder = NSAttributedString(string: "Your Full Name", attributes: [NSAttributedString.Key.foregroundColor:UIColor.white])
 
         emailTF.layer.cornerRadius = 17
         emailTF.layer.masksToBounds = true
@@ -212,24 +211,22 @@ extension SignUpVC{
 
         }else{
             print("DONE")
-            self.username = username
-            self.email = email
-            self.password = password
-//            AuthServices.instance.registerNewUser(email: emailTF.text!, password: confrimPwTF.text!) { (isSuccess, error) in
-//                if isSuccess{
-//                    self.performSegue(withIdentifier: "signupTypeSegue", sender: self)
-//                }else{
-//                    _ = self.handleError(error!)
-//                    print(error!.localizedDescription)
-//                    if(error!.localizedDescription == "The email address is badly formatted."){
-//                        self.emailTF.layer.borderColor = #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1)
-//                    }else if(error!.localizedDescription == "An email address must be provided."){
-//                        self.emailTF.layer.borderColor = #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1)
-//                    }else if(error!.localizedDescription == "The password must be 6 characters long or more."){
-//                        self.passwordTF.layer.borderColor = #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1)
-//                    }
-//                }
-//            }
+            self.fullname = username
+            AuthServices.instance.registerNewUser(email: emailTF.text!, password: confrimPwTF.text!) { (isSuccess, error) in
+                if isSuccess{
+                    self.performSegue(withIdentifier: "signupProfileImageSegue", sender: self)
+                }else{
+                    _ = self.handleError(error!)
+                    print(error!.localizedDescription)
+                    if(error!.localizedDescription == "The email address is badly formatted."){
+                        self.emailTF.layer.borderColor = #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1)
+                    }else if(error!.localizedDescription == "An email address must be provided."){
+                        self.emailTF.layer.borderColor = #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1)
+                    }else if(error!.localizedDescription == "The password must be 6 characters long or more."){
+                        self.passwordTF.layer.borderColor = #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1)
+                    }
+                }
+            }
 
 
         }

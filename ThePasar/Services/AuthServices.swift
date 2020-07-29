@@ -16,6 +16,32 @@ let db = Firestore.firestore()
 class AuthServices {
     static let instance = AuthServices()
     
+    func registerNewUser(email:String,password:String,requestComplete:@escaping(_ status: Bool,_ error: Error?)->()){
+        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+            if error == nil{
+                requestComplete(true,nil)
+            }else{
+                requestComplete(false,error!)
+            }
+        }
+    }
+    func addUserToDatabase(name:String,address:String,profileImage:String,requestComplete:@escaping(_ status: Bool)->()){
+        
+        let user = User(uid: Auth.auth().currentUser!.uid, name: name, phone: "", address: address, profileImage: profileImage, isActivated: true, isActive: true)
+        
+        let docData = try! FirestoreEncoder().encode(user)
+        
+        db.collection("User").document((Auth.auth().currentUser?.uid)!).setData(docData, completion: { (err) in
+            if let error = err{
+                print("Error Adding New User:\(error)")
+            }else{
+               requestComplete(true)
+                
+                
+            }
+        })
+    }
+    
 //    func registerNewUser(email:String,password:String,requestComplete:@escaping(_ status: Bool,_ error: Error?)->()){
 //        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
 //            if error == nil{
@@ -26,26 +52,7 @@ class AuthServices {
 //        }
 //    }
 //    
-//    func addUserToDatabase(accType:String,username:String,name:String,ic:String, phone:String,address:String,bankAcc:String,profileImage:String,requestComplete:@escaping(_ status: Bool)->()){
-//
-//        let user = LandLord(uid: (Auth.auth().currentUser?.uid)!, type: accType, ic: ic, username: username, name: name, phone: phone, address: address, bankAcc: bankAcc, profileImage: profileImage, isActivated: false, isPremium:false, isActive: true)
-//        
-//        let docData = try! FirestoreEncoder().encode(user)
-//        
-//        db.collection(accType).document((Auth.auth().currentUser?.uid)!).setData(docData, completion: { (err) in
-//            if let error = err{
-//                print("Error Adding New User:\(error)")
-//            }else{
-//                db.collection("accountType").document((Auth.auth().currentUser?.uid)!).setData(["type":accType,"isActivated":false,"isPremium":false], completion: { (error) in
-//                    if error == nil{
-//                        requestComplete(true)
-//                    }
-//                })
-//                
-//                
-//            }
-//        })
-//    }
+
 //    
 //    func loginUser(withEmail email: String,andPassword password: String,requestComplete: @escaping(_ status: Bool,_ error: Error?)->()){
 //        
