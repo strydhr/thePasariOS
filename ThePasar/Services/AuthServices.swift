@@ -25,9 +25,9 @@ class AuthServices {
             }
         }
     }
-    func addUserToDatabase(name:String,address:String,profileImage:String,requestComplete:@escaping(_ status: Bool)->()){
+    func addUserToDatabase(name:String,address:String,lat:Double,lng:Double,geohash:String,profileImage:String,requestComplete:@escaping(_ status: Bool)->()){
         
-        let user = User(uid: Auth.auth().currentUser!.uid, name: name, phone: "", address: address, profileImage: profileImage, isActivated: true, isActive: true)
+        let user = User(uid: Auth.auth().currentUser!.uid, name: name, phone: "", address: address, lat: lat, lng: lng, g: geohash, profileImage: profileImage, isActivated: true, isActive: true)
         
         let docData = try! FirestoreEncoder().encode(user)
         

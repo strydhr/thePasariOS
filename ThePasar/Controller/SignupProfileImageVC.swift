@@ -25,6 +25,9 @@ class SignupProfileImageVC: UIViewController {
     var address:String?
     var selectedImage: UIImage?
     var isProfilePicSet = false
+    var latitude:Double?
+    var longitude:Double?
+    var geoHash:String?
     var addressResult = [String]()
     var gmsFetcher: GMSAutocompleteFetcher!
     var resultAC = [GMSAutocompletePrediction]()
@@ -171,6 +174,9 @@ extension SignupProfileImageVC:GMSAutocompleteViewControllerDelegate{
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         addressTF.text = place.name
         address = place.formattedAddress
+        latitude = place.coordinate.latitude
+        longitude = place.coordinate.longitude
+        geoHash = place.coordinate.geohash(length: 10)
         dismiss(animated: true, completion: nil)
     }
 
@@ -232,7 +238,7 @@ extension SignupProfileImageVC{
         }else{
             SVProgressHUD.show()
             uploadImages(image: profileImage.image!, imageName: "profile") { (url) in
-                AuthServices.instance.addUserToDatabase(name: self.fullname!, address: "", profileImage: url) { (isSuccess) in
+                AuthServices.instance.addUserToDatabase(name: self.fullname!, address: address,lat:self.latitude!,lng: self.longitude!,geohash: self.geoHash!, profileImage: url) { (isSuccess) in
                     if isSuccess{
                         let mainVC = self.storyboard?.instantiateViewController(withIdentifier: "loggedIn")
                         mainVC?.modalPresentationStyle = .fullScreen
