@@ -144,7 +144,34 @@ extension LoginVC{
 
             loginBtn.isEnabled = true
         }else{
-
+            AuthServices.instance.loginUser(withEmail: email, andPassword: password) { (isSuccess, error) in
+                if isSuccess{
+                    //
+                    let userInfo = db.collection("User").document((Auth.auth().currentUser?.uid)!)
+                    userInfo.getDocument { (snapshot, err) in
+                        if err == nil{
+                            if snapshot!.exists{
+                                guard let snapShot = snapshot?.data() else {return}
+                                userGlobal = try! FirestoreDecoder().decode(User.self, from: snapShot )
+                                let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                                let authVC = storyboard.instantiateViewController(withIdentifier: "loggedIn")
+                                
+                                authVC.modalPresentationStyle = .fullScreen
+                                self.present(authVC, animated: true, completion: nil)
+                            }else{
+                                try! Auth.auth().signOut()
+                            }
+                            
+                        }
+                    }
+                    //
+                    
+                }else{
+                    self.loginBtn.isEnabled = true
+                    _ = self.handleError(error!)
+                    print(error!.localizedDescription)
+                }
+            }
         }
     }
 }

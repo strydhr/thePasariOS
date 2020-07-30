@@ -41,6 +41,19 @@ class AuthServices {
             }
         })
     }
+     func loginUser(withEmail email: String,andPassword password: String,requestComplete: @escaping(_ status: Bool,_ error: Error?)->()){
+    
+    
+            Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+                if error == nil{
+                    requestComplete(true,nil)
+                }else{
+                    requestComplete(false,error!)
+                }
+            }
+    
+    
+        }
     
 //    func registerNewUser(email:String,password:String,requestComplete:@escaping(_ status: Bool,_ error: Error?)->()){
 //        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
