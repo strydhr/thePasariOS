@@ -47,6 +47,14 @@ extension ProductVC: UITableViewDelegate, UITableViewDataSource{
         
         return cell
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let product = productList[indexPath.row].product
+        tableView.deselectRow(at: indexPath, animated: true)
+        let addToOrder = addToOderPopup()
+        addToOrder.selectedProduct = product
+        addToOrder.modalPresentationStyle = .fullScreen
+        present(addToOrder, animated: true, completion: nil)
+    }
     
     
 }
