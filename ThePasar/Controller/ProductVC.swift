@@ -10,9 +10,13 @@ import UIKit
 
 class ProductVC: UIViewController {
     @IBOutlet weak var productTable: UITableView!
+    @IBOutlet weak var proceedBtn: UIButton!
+    @IBOutlet weak var btnHeightConstraint: NSLayoutConstraint!
     
     var viewStore:Store?
     var productList = [ProductDocument]()
+    
+    var cartItems = [itemPurchasing]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +27,18 @@ class ProductVC: UIViewController {
         loadDatas()
         
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "cartSegue"{
+            let destination = segue.destination as! CartVC
+            destination.cartList = cartItems
+            destination.store = viewStore
+        }
+    }
     
-
+    @IBAction func proceedBtnPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "cartSegue", sender: self)
+    }
+    
 
 }
 extension ProductVC: UITableViewDelegate, UITableViewDataSource{
@@ -52,8 +66,12 @@ extension ProductVC: UITableViewDelegate, UITableViewDataSource{
         tableView.deselectRow(at: indexPath, animated: true)
         let addToOrder = addToOderPopup()
         addToOrder.selectedProduct = product
+        addToOrder.items = cartItems
+        addToOrder.delegate = self
         addToOrder.modalPresentationStyle = .fullScreen
         present(addToOrder, animated: true, completion: nil)
+        
+        
     }
     
     
@@ -65,4 +83,20 @@ extension ProductVC{
             self.productTable.reloadData()
         }
     }
+    
+    func initlayout(){
+        if cartItems.count == 0{
+            btnHeightConstraint.constant = 0
+        }
+    }
+}
+
+extension ProductVC:updateCartDelegate{
+    func updatedCart(items: [itemPurchasing]) {
+        cartItems = items
+        print(items.count)
+        btnHeightConstraint.constant = 40
+    }
+    
+    
 }

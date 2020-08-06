@@ -412,18 +412,34 @@
                                 <color key="backgroundColor" red="0.2784313725" green="0.69803921570000005" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Znj-CI-I5q">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="685"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yL5-d0-4H2">
+                                <rect key="frame" x="0.0" y="773" width="414" height="40"/>
+                                <color key="backgroundColor" red="0.2784313725" green="0.69803921570000005" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="KH3-tm-wwR"/>
+                                </constraints>
+                                <state key="normal" title="Proceed">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="proceedBtnPressed:" destination="NID-cE-koW" eventType="touchUpInside" id="flh-Qu-mTt"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="ZZM-0u-6jA" firstAttribute="trailing" secondItem="Znj-CI-I5q" secondAttribute="trailing" id="65B-FD-MPM"/>
                             <constraint firstItem="KMm-Nv-Phw" firstAttribute="top" secondItem="y9c-uq-mPq" secondAttribute="top" id="6cc-Cg-jqP"/>
-                            <constraint firstItem="ZZM-0u-6jA" firstAttribute="bottom" secondItem="Znj-CI-I5q" secondAttribute="bottom" id="BKS-9W-y0l"/>
+                            <constraint firstItem="ZZM-0u-6jA" firstAttribute="trailing" secondItem="yL5-d0-4H2" secondAttribute="trailing" id="8DZ-ll-Azk"/>
+                            <constraint firstItem="yL5-d0-4H2" firstAttribute="leading" secondItem="ZZM-0u-6jA" secondAttribute="leading" id="Akf-oi-Ln6"/>
                             <constraint firstItem="KMm-Nv-Phw" firstAttribute="trailing" secondItem="ZZM-0u-6jA" secondAttribute="trailing" id="Rpd-Sg-C3a"/>
                             <constraint firstAttribute="bottom" secondItem="KMm-Nv-Phw" secondAttribute="bottom" id="bms-Gu-hb4"/>
                             <constraint firstItem="Znj-CI-I5q" firstAttribute="top" secondItem="ZZM-0u-6jA" secondAttribute="top" id="oOF-Dv-iDE"/>
+                            <constraint firstItem="ZZM-0u-6jA" firstAttribute="bottom" secondItem="yL5-d0-4H2" secondAttribute="bottom" id="qET-dx-nXN"/>
+                            <constraint firstItem="yL5-d0-4H2" firstAttribute="top" secondItem="Znj-CI-I5q" secondAttribute="bottom" id="tAS-NV-lV2"/>
                             <constraint firstItem="Znj-CI-I5q" firstAttribute="leading" secondItem="ZZM-0u-6jA" secondAttribute="leading" id="trA-8I-99o"/>
                             <constraint firstItem="KMm-Nv-Phw" firstAttribute="leading" secondItem="ZZM-0u-6jA" secondAttribute="leading" id="u4U-AF-5VK"/>
                         </constraints>
@@ -431,12 +447,70 @@
                     </view>
                     <navigationItem key="navigationItem" id="hWC-PN-udO"/>
                     <connections>
+                        <outlet property="btnHeightConstraint" destination="KH3-tm-wwR" id="wWY-II-qdU"/>
+                        <outlet property="proceedBtn" destination="yL5-d0-4H2" id="X2t-8l-6EF"/>
                         <outlet property="productTable" destination="Znj-CI-I5q" id="Cps-rU-vrx"/>
+                        <segue destination="oDS-Dy-dig" kind="show" identifier="cartSegue" id="BzB-ur-CUy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zo3-yV-KRo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8003" y="138"/>
+            <point key="canvasLocation" x="8002.898550724638" y="137.94642857142856"/>
+        </scene>
+        <!--CartVC-->
+        <scene sceneID="Toy-Q3-ZOi">
+            <objects>
+                <viewController id="oDS-Dy-dig" customClass="CartVC" customModule="ThePasar" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="L2t-ZD-lTE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="iWd-Xj-7Iv">
+                                <rect key="frame" x="-1506" y="0.0" width="1920" height="896"/>
+                                <color key="backgroundColor" red="0.2784313725" green="0.69803921570000005" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="k39-6d-fya">
+                                <rect key="frame" x="0.0" y="88" width="414" height="685"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UEO-lR-IGZ">
+                                <rect key="frame" x="0.0" y="773" width="414" height="40"/>
+                                <color key="backgroundColor" red="0.2784313725" green="0.69803921570000005" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="LGL-ic-Tf0"/>
+                                </constraints>
+                                <state key="normal" title="Confirm">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="confirmBtnPressed:" destination="oDS-Dy-dig" eventType="touchUpInside" id="LFb-n7-Af4"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="UEO-lR-IGZ" firstAttribute="top" secondItem="k39-6d-fya" secondAttribute="bottom" id="1fG-8J-Cgd"/>
+                            <constraint firstItem="0pF-t7-pkP" firstAttribute="trailing" secondItem="UEO-lR-IGZ" secondAttribute="trailing" id="5Z3-QU-0Eo"/>
+                            <constraint firstItem="iWd-Xj-7Iv" firstAttribute="trailing" secondItem="0pF-t7-pkP" secondAttribute="trailing" id="OE8-7h-3Xm"/>
+                            <constraint firstItem="0pF-t7-pkP" firstAttribute="trailing" secondItem="k39-6d-fya" secondAttribute="trailing" id="PU3-5K-now"/>
+                            <constraint firstItem="k39-6d-fya" firstAttribute="top" secondItem="0pF-t7-pkP" secondAttribute="top" id="Q3t-t7-Gj4"/>
+                            <constraint firstItem="iWd-Xj-7Iv" firstAttribute="top" secondItem="L2t-ZD-lTE" secondAttribute="top" id="cc0-u3-lJD"/>
+                            <constraint firstItem="k39-6d-fya" firstAttribute="leading" secondItem="0pF-t7-pkP" secondAttribute="leading" id="lcz-dW-fZl"/>
+                            <constraint firstItem="0pF-t7-pkP" firstAttribute="bottom" secondItem="UEO-lR-IGZ" secondAttribute="bottom" id="u5e-BP-zEP"/>
+                            <constraint firstItem="UEO-lR-IGZ" firstAttribute="leading" secondItem="0pF-t7-pkP" secondAttribute="leading" id="uiV-eT-tIn"/>
+                            <constraint firstAttribute="bottom" secondItem="iWd-Xj-7Iv" secondAttribute="bottom" id="wRz-cA-eie"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0pF-t7-pkP"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="B36-M7-fua"/>
+                    <connections>
+                        <outlet property="cartTable" destination="k39-6d-fya" id="XXQ-Os-eUh"/>
+                        <outlet property="confrimBtn" destination="UEO-lR-IGZ" id="rw2-f8-LEu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uuf-Gd-6Ix" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8811" y="135"/>
         </scene>
         <!--LoginVC-->
         <scene sceneID="LMS-DH-xcx">
