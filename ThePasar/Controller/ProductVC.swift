@@ -17,6 +17,8 @@ class ProductVC: UIViewController {
     var productList = [ProductDocument]()
     
     var cartItems = [itemPurchasing]()
+    var theresDeliveryTime = false
+    var deliveryTime:Date?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +34,8 @@ class ProductVC: UIViewController {
             let destination = segue.destination as! CartVC
             destination.cartList = cartItems
             destination.store = viewStore
+            destination.hasDeliveryTime = theresDeliveryTime
+            destination.deliveryTime = deliveryTime
         }
     }
     
@@ -68,12 +72,16 @@ extension ProductVC: UITableViewDelegate, UITableViewDataSource{
         addToOrder.selectedProduct = product
         addToOrder.items = cartItems
         addToOrder.delegate = self
+        addToOrder.hasDeliveryTime = theresDeliveryTime
+        addToOrder.deliveryTime = deliveryTime
         addToOrder.modalPresentationStyle = .fullScreen
         present(addToOrder, animated: true, completion: nil)
         
-        
+        let hasDeliveryTime = cartItems.filter({$0.hasDeliveryTime == true}).first
+        if hasDeliveryTime != nil{
+            
+        }
     }
-    
     
 }
 extension ProductVC{
@@ -92,9 +100,12 @@ extension ProductVC{
 }
 
 extension ProductVC:updateCartDelegate{
-    func updatedCart(items: [itemPurchasing]) {
+    func updatedCart(items: [itemPurchasing], hasDelivery: Bool, sendBy: Date?) {
         cartItems = items
-        print(items.count)
+        if hasDelivery{
+            theresDeliveryTime = hasDelivery
+            deliveryTime = sendBy
+        }
         btnHeightConstraint.constant = 40
     }
     

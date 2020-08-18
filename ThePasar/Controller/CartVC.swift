@@ -9,6 +9,7 @@
 import UIKit
 import CodableFirebase
 import FirebaseFirestore
+import Firebase
 
 class CartVC: UIViewController {
     @IBOutlet weak var cartTable: UITableView!
@@ -16,6 +17,8 @@ class CartVC: UIViewController {
     
     var store:Store?
     var cartList = [itemPurchasing]()
+    var hasDeliveryTime = false
+    var deliveryTime:Date?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +31,11 @@ class CartVC: UIViewController {
     }
     
     @IBAction func confirmBtnPressed(_ sender: UIButton) {
-        let receipt = Receipts(items: cartList, date: Timestamp(), purchaserId: userGlobal!.uid, purchaserName: userGlobal!.name, purchaserAddress: userGlobal!.address, storeId: store!.uid, storeName: store!.name, ownerId: store!.ownerId)
+//        let receipt = Receipts(items: cartList, date: Timestamp(), purchaserId: userGlobal!.uid, purchaserName: userGlobal!.name, purchaserAddress: userGlobal!.address, storeId: store!.uid, storeName: store!.name, ownerId: store!.ownerId)
+        let deliveryTimeStamp = Timestamp.init(date: deliveryTime!)
+        
+        let receipt = Receipts(items: cartList, date: Timestamp(), hasDeliveryTime: hasDeliveryTime, deliveryTime: deliveryTimeStamp, purchaserId: userGlobal!.uid, purchaserName: userGlobal!.name, purchaserAddress: userGlobal!.address, storeId: store!.uid, storeName: store!.name, ownerId: store!.ownerId, hasDelivered: false)
+        
         PurchaseServices.instance.confirmPurchase(receipt: receipt) { (isSuccess) in
             if isSuccess{
                 self.navigationController?.popToRootViewController(animated: true)

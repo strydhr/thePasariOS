@@ -8,7 +8,7 @@
 
 import UIKit
 protocol updateCartDelegate {
-    func updatedCart(items:[itemPurchasing])
+    func updatedCart(items:[itemPurchasing],hasDelivery:Bool,sendBy:Date?)
 }
 
 class addToOderPopup: UIViewController {
@@ -38,6 +38,8 @@ class addToOderPopup: UIViewController {
     var category = [String]()
     
     var items = [itemPurchasing]()
+    var hasDeliveryTime = false
+    var deliveryTime:Date?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,6 +102,14 @@ extension addToOderPopup{
         productImage.cacheImage(imageUrl: selectedProduct!.profileImage)
         productDescription.text = selectedProduct?.details
         productPrice.text = "RM " + String(format: "%.2f", selectedProduct!.price)
+        
+        if hasDeliveryTime{
+            print(deliveryTime)
+            let calendar = Calendar.current
+            let components = calendar.dateComponents([.hour, .month], from: deliveryTime!)
+            print(components.hour)
+            timeTF.text = "\((components.hour)!):00"
+        }
     }
     
     func initalSettings(){
@@ -110,6 +120,8 @@ extension addToOderPopup{
             mealsView.isHidden = true
             heightConstraint.constant = 0
             mealsSeparatorView.isHidden = true
+        }else{
+            hasDeliveryTime = true
         }
         
         let calendar = Calendar.current
@@ -142,6 +154,7 @@ extension addToOderPopup{
     }
     
     func dinnerTimePicker(){
+        timeTF.isUserInteractionEnabled = true
         timePicker.delegate = self
         timePicker.dataSource = self
         
@@ -195,7 +208,8 @@ extension addToOderPopup{
                 
                 let updatedItem = itemPurchasing(productId: selectedProduct!.uid, productName: selectedProduct!.name, productPrice: selectedProduct!.price, itemCount: orderCount, hasDeliveryTime: true, deliveryTime: finalDate!)
                 items.append(updatedItem)
-                delegate?.updatedCart(items: items)
+                deliveryTime = finalDate
+                delegate?.updatedCart(items: items, hasDelivery: hasDeliveryTime, sendBy: deliveryTime)
                 dismiss(animated: true, completion: nil)
                 
             }
