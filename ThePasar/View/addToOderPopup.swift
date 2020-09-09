@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
+import CodableFirebase
+
 protocol updateCartDelegate {
     func updatedCart(items:[itemPurchasing],hasDelivery:Bool,sendBy:Date?)
 }
@@ -19,6 +23,8 @@ class addToOderPopup: UIViewController {
     @IBOutlet weak var breakfastBtn: UIButton!
     @IBOutlet weak var lunchBtn: UIButton!
     @IBOutlet weak var dinnerBtn: UIButton!
+    @IBOutlet weak var increaseBtn: UIButton!
+    @IBOutlet weak var decreaseBtn: UIButton!
     @IBOutlet weak var timeTF: UITextField!
     @IBOutlet weak var orderCountTF: UITextField!
     @IBOutlet weak var totalLabel: UILabel!
@@ -29,6 +35,8 @@ class addToOderPopup: UIViewController {
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     
     var delegate:updateCartDelegate?
+    
+    var productMaxStock:Int?
     
     var selectedProduct:Product?
     var orderCount = 1
@@ -73,18 +81,44 @@ class addToOderPopup: UIViewController {
         dinnerTimePicker()
     }
     @IBAction func minusBtnPressed(_ sender: UIButton) {
-        if orderCount != 1{
-            orderCount -= 1
+        if selectedProduct?.type == "Handmade"{
+            if orderCount != 1{
+                increaseBtn.isUserInteractionEnabled = true
+                increaseBtn.tintColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+                orderCount -= 1
+                orderCountTF.text = String(orderCount)
+                let newTotal = Double(orderCount) * selectedProduct!.price
+                totalLabel.text = "RM " + String(format: "%.2f", newTotal)
+            }
+            
+        }else{
+            if orderCount != 1{
+                orderCount -= 1
+                orderCountTF.text = String(orderCount)
+                let newTotal = Double(orderCount) * selectedProduct!.price
+                totalLabel.text = "RM " + String(format: "%.2f", newTotal)
+            }
+        }
+
+    }
+    @IBAction func addBtnPressed(_ sender: UIButton) {
+        if selectedProduct?.type == "Handmade"{
+            orderCount += 1
+            orderCountTF.text = String(orderCount)
+            let newTotal = Double(orderCount) * selectedProduct!.price
+            totalLabel.text = "RM " + String(format: "%.2f", newTotal)
+            
+            if orderCount == selectedProduct?.count{
+                increaseBtn.isUserInteractionEnabled = false
+                increaseBtn.tintColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+            }
+        }else{
+            orderCount += 1
             orderCountTF.text = String(orderCount)
             let newTotal = Double(orderCount) * selectedProduct!.price
             totalLabel.text = "RM " + String(format: "%.2f", newTotal)
         }
-    }
-    @IBAction func addBtnPressed(_ sender: UIButton) {
-        orderCount += 1
-        orderCountTF.text = String(orderCount)
-        let newTotal = Double(orderCount) * selectedProduct!.price
-        totalLabel.text = "RM " + String(format: "%.2f", newTotal)
+        
     }
     
     @IBAction func addToCardBtnPressed(_ sender: UIButton) {
@@ -203,16 +237,23 @@ extension addToOderPopup{
                 dateFormatter.dateFormat = "yyyy-MM-dd 'at' HH:mm"
                 let string = date + " at " + time!
                 let finalDate = dateFormatter.date(from: string)
+                let finalDateTimeStamp = Timestamp.init(date: finalDate!)
                 //
                 
                 
-                let updatedItem = itemPurchasing(productId: selectedProduct!.uid, productName: selectedProduct!.name, productPrice: selectedProduct!.price, itemCount: orderCount, hasDeliveryTime: true, deliveryTime: finalDate!)
+                let updatedItem = itemPurchasing(productId: selectedProduct!.uid, productName: selectedProduct!.name, productPrice: selectedProduct!.price, itemCount: orderCount, hasDeliveryTime: true, deliveryTime: finalDateTimeStamp, colorClass: selectedProduct!.colorClass)
                 items.append(updatedItem)
                 deliveryTime = finalDate
                 delegate?.updatedCart(items: items, hasDelivery: hasDeliveryTime, sendBy: deliveryTime)
                 dismiss(animated: true, completion: nil)
                 
             }
+        }else{
+            let updatedItem = itemPurchasing(productId: selectedProduct!.uid, productName: selectedProduct!.name, productPrice: selectedProduct!.price, itemCount: orderCount, hasDeliveryTime: false, deliveryTime: Timestamp.init(date: Date()), colorClass: selectedProduct!.colorClass)
+            items.append(updatedItem)
+            deliveryTime = Date()
+            delegate?.updatedCart(items: items, hasDelivery: hasDeliveryTime, sendBy: deliveryTime)
+            dismiss(animated: true, completion: nil)
         }
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -11,8 +11,10 @@
             <connections>
                 <outlet property="addToCartBtn" destination="oo4-he-L9B" id="yg5-C4-iGA"/>
                 <outlet property="breakfastBtn" destination="ukJ-rx-bcK" id="jhb-xd-NtE"/>
+                <outlet property="decreaseBtn" destination="Vx4-Ng-BAp" id="y3Y-aC-2PC"/>
                 <outlet property="dinnerBtn" destination="jQR-Pd-lfE" id="VRa-Jj-t3N"/>
                 <outlet property="heightConstraint" destination="2Cq-ct-f5u" id="TeM-uD-T9h"/>
+                <outlet property="increaseBtn" destination="iM4-VF-tpO" id="6rH-wY-Y49"/>
                 <outlet property="lunchBtn" destination="qWc-LY-eoT" id="vTR-qR-ff9"/>
                 <outlet property="mealsSeparatorView" destination="QNY-mz-zrO" id="m3r-mK-0Ne"/>
                 <outlet property="mealsView" destination="gzw-14-ACk" id="Adf-eu-rQT"/>

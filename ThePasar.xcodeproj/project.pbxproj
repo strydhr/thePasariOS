@@ -25,6 +25,12 @@
 		D2506AE824D29A7100BF160B /* radiusSettingPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2506AE624D29A7100BF160B /* radiusSettingPopup.xib */; };
 		D2506AEB24D2AE7000BF160B /* addToOderPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2506AE924D2AE7000BF160B /* addToOderPopup.swift */; };
 		D2506AEC24D2AE7000BF160B /* addToOderPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2506AEA24D2AE7000BF160B /* addToOderPopup.xib */; };
+		D251FDF624EBB190005B751F /* OrdersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D251FDF524EBB190005B751F /* OrdersVC.swift */; };
+		D251FDF924EBB4CD005B751F /* orderHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D251FDF724EBB4CC005B751F /* orderHeader.swift */; };
+		D251FDFA24EBB4CD005B751F /* orderHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = D251FDF824EBB4CD005B751F /* orderHeader.xib */; };
+		D251FDFC24EBC0D5005B751F /* OrderServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D251FDFB24EBC0D5005B751F /* OrderServices.swift */; };
+		D251FDFF24EBD214005B751F /* rejectedCommentPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D251FDFD24EBD214005B751F /* rejectedCommentPopup.swift */; };
+		D251FE0024EBD214005B751F /* rejectedCommentPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = D251FDFE24EBD214005B751F /* rejectedCommentPopup.xib */; };
 		D25283AF24DA689A00325978 /* PurchaseServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25283AE24DA689A00325978 /* PurchaseServices.swift */; };
 		D253969424D93833004665E3 /* CartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D253969324D93833004665E3 /* CartVC.swift */; };
 		D253969724D94629004665E3 /* cartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D253969524D94629004665E3 /* cartCell.swift */; };
@@ -64,6 +70,12 @@
 		D2506AE624D29A7100BF160B /* radiusSettingPopup.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = radiusSettingPopup.xib; sourceTree = "<group>"; };
 		D2506AE924D2AE7000BF160B /* addToOderPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addToOderPopup.swift; sourceTree = "<group>"; };
 		D2506AEA24D2AE7000BF160B /* addToOderPopup.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = addToOderPopup.xib; sourceTree = "<group>"; };
+		D251FDF524EBB190005B751F /* OrdersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersVC.swift; sourceTree = "<group>"; };
+		D251FDF724EBB4CC005B751F /* orderHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = orderHeader.swift; sourceTree = "<group>"; };
+		D251FDF824EBB4CD005B751F /* orderHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = orderHeader.xib; sourceTree = "<group>"; };
+		D251FDFB24EBC0D5005B751F /* OrderServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderServices.swift; sourceTree = "<group>"; };
+		D251FDFD24EBD214005B751F /* rejectedCommentPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rejectedCommentPopup.swift; sourceTree = "<group>"; };
+		D251FDFE24EBD214005B751F /* rejectedCommentPopup.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = rejectedCommentPopup.xib; sourceTree = "<group>"; };
 		D25283AE24DA689A00325978 /* PurchaseServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseServices.swift; sourceTree = "<group>"; };
 		D253969324D93833004665E3 /* CartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartVC.swift; sourceTree = "<group>"; };
 		D253969524D94629004665E3 /* cartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cartCell.swift; sourceTree = "<group>"; };
@@ -120,6 +132,7 @@
 		D24C4CBA24C7F3F3005F27E4 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				D251FDFB24EBC0D5005B751F /* OrderServices.swift */,
 				D254C03124D1610100E7C69E /* StoreServices.swift */,
 				D24C4CBB24C7F409005F27E4 /* AuthServices.swift */,
 				D25283AE24DA689A00325978 /* PurchaseServices.swift */,
@@ -191,6 +204,7 @@
 				D24EF9C624CA9792005937C5 /* MainTabVC.swift */,
 				D2506AE324D2839D00BF160B /* ProductVC.swift */,
 				D253969324D93833004665E3 /* CartVC.swift */,
+				D251FDF524EBB190005B751F /* OrdersVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -208,6 +222,8 @@
 		D270EC9824C6CECC00C9B3A7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D251FDF724EBB4CC005B751F /* orderHeader.swift */,
+				D251FDF824EBB4CD005B751F /* orderHeader.xib */,
 				D2506ADF24D2764400BF160B /* productCell.swift */,
 				D2506AE024D2764500BF160B /* productCell.xib */,
 				D254C03324D164D100E7C69E /* storeCell.swift */,
@@ -218,6 +234,8 @@
 				D2506AEA24D2AE7000BF160B /* addToOderPopup.xib */,
 				D253969524D94629004665E3 /* cartCell.swift */,
 				D253969624D94629004665E3 /* cartCell.xib */,
+				D251FDFD24EBD214005B751F /* rejectedCommentPopup.swift */,
+				D251FDFE24EBD214005B751F /* rejectedCommentPopup.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -301,6 +319,7 @@
 			files = (
 				D253969824D94629004665E3 /* cartCell.xib in Resources */,
 				D270EC9524C6C5AA00C9B3A7 /* GoogleService-Info.plist in Resources */,
+				D251FE0024EBD214005B751F /* rejectedCommentPopup.xib in Resources */,
 				D2506AE824D29A7100BF160B /* radiusSettingPopup.xib in Resources */,
 				D254C03624D164D100E7C69E /* storeCell.xib in Resources */,
 				D270EC8D24C6C43900C9B3A7 /* LaunchScreen.storyboard in Resources */,
@@ -308,6 +327,7 @@
 				D2506AEC24D2AE7000BF160B /* addToOderPopup.xib in Resources */,
 				D270EC8A24C6C43900C9B3A7 /* Assets.xcassets in Resources */,
 				D270EC8824C6C42200C9B3A7 /* Main.storyboard in Resources */,
+				D251FDFA24EBB4CD005B751F /* orderHeader.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,13 +398,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				D25283AF24DA689A00325978 /* PurchaseServices.swift in Sources */,
+				D251FDF624EBB190005B751F /* OrdersVC.swift in Sources */,
 				D2506AE124D2764500BF160B /* productCell.swift in Sources */,
 				D254C03024D1596100E7C69E /* Store.swift in Sources */,
 				D24EF9C924CA9FFC005937C5 /* User.swift in Sources */,
 				D24C4CB724C7F346005F27E4 /* RoundButton.swift in Sources */,
 				D24C4CB124C7F094005F27E4 /* SignUpVC.swift in Sources */,
+				D251FDFC24EBC0D5005B751F /* OrderServices.swift in Sources */,
 				D24A90E824C965C800BC726F /* SignupProfileImageVC.swift in Sources */,
 				D2506AE424D2839D00BF160B /* ProductVC.swift in Sources */,
+				D251FDFF24EBD214005B751F /* rejectedCommentPopup.swift in Sources */,
 				D2506AEB24D2AE7000BF160B /* addToOderPopup.swift in Sources */,
 				D24C4CB924C7F346005F27E4 /* ImageCache.swift in Sources */,
 				D270EC8524C6C42100C9B3A7 /* ViewController.swift in Sources */,
@@ -397,6 +420,7 @@
 				D254C03524D164D100E7C69E /* storeCell.swift in Sources */,
 				D24C4CB224C7F094005F27E4 /* LoginVC.swift in Sources */,
 				D254C02C24D14E7500E7C69E /* GeoHash.swift in Sources */,
+				D251FDF924EBB4CD005B751F /* orderHeader.swift in Sources */,
 				D2506AE724D29A7100BF160B /* radiusSettingPopup.swift in Sources */,
 				D254C02F24D1596100E7C69E /* Product.swift in Sources */,
 				D254C03224D1610100E7C69E /* StoreServices.swift in Sources */,

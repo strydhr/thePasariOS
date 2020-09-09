@@ -19,3 +19,17 @@ struct Radius{
 }
 
 let radiusList = [Radius(label: "5 Km", radius: 5),Radius(label: "15 Km", radius: 15),Radius(label: "more than 15 Km", radius: 100)]
+
+func getDateLabel(dates:Date)->String{
+    let formatter = DateFormatter()
+    formatter.dateFormat = "dd/MM/yyyy"
+    let dateStr = formatter.string(from: dates)
+    return dateStr
+}
+
+func getTimeLabel(dates:Date)->String{
+    let formatter = DateFormatter()
+    formatter.dateFormat = "hh:mm a"
+    let dateStr = formatter.string(from: dates)
+    return dateStr
+}

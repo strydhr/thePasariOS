@@ -34,9 +34,9 @@ class CartVC: UIViewController {
 //        let receipt = Receipts(items: cartList, date: Timestamp(), purchaserId: userGlobal!.uid, purchaserName: userGlobal!.name, purchaserAddress: userGlobal!.address, storeId: store!.uid, storeName: store!.name, ownerId: store!.ownerId)
         let deliveryTimeStamp = Timestamp.init(date: deliveryTime!)
         
-        let receipt = Receipts(items: cartList, date: Timestamp(), hasDeliveryTime: hasDeliveryTime, deliveryTime: deliveryTimeStamp, purchaserId: userGlobal!.uid, purchaserName: userGlobal!.name, purchaserAddress: userGlobal!.address, storeId: store!.uid, storeName: store!.name, ownerId: store!.ownerId, hasDelivered: false)
+        let order = Order(items: cartList, date: Timestamp(), hasDeliveryTime: hasDeliveryTime, deliveryTime: deliveryTimeStamp, purchaserId: userGlobal!.uid, purchaserName: userGlobal!.name, purchaserAddress: userGlobal!.address, storeId: store!.uid, storeName: store!.name, ownerId: store!.ownerId, hasDelivered: false,confirmationStatus: 1,comment: "")
         
-        PurchaseServices.instance.confirmPurchase(receipt: receipt) { (isSuccess) in
+        PurchaseServices.instance.confirmPurchase(receipt: order) { (isSuccess) in
             if isSuccess{
                 self.navigationController?.popToRootViewController(animated: true)
             }
