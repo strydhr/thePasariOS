@@ -14,13 +14,22 @@ import CodableFirebase
 class PurchaseServices {
     static let instance = PurchaseServices()
     
-    func confirmPurchase(receipt:Order,requestComplete:@escaping(_ status: Bool)->()){
+//    func confirmPurchase(receipt:Order,requestComplete:@escaping(_ status: Bool)->()){
+//        let docData = try! FirestoreEncoder().encode(receipt)
+//        
+//        db.collection("orders").addDocument(data: docData) { (error) in
+//            if error == nil{
+//                requestComplete(true)
+//            }
+//        }
+//    }
+    
+    func confirmPurchase(receipt:Order)->Bool{
         let docData = try! FirestoreEncoder().encode(receipt)
         
-        db.collection("orders").addDocument(data: docData) { (error) in
-            if error == nil{
-                requestComplete(true)
-            }
-        }
+        db.collection("orders").addDocument(data: docData)
+        return true
+            
+        
     }
 }

@@ -31,16 +31,47 @@ class CartVC: UIViewController {
     }
     
     @IBAction func confirmBtnPressed(_ sender: UIButton) {
-//        let receipt = Receipts(items: cartList, date: Timestamp(), purchaserId: userGlobal!.uid, purchaserName: userGlobal!.name, purchaserAddress: userGlobal!.address, storeId: store!.uid, storeName: store!.name, ownerId: store!.ownerId)
-        let deliveryTimeStamp = Timestamp.init(date: deliveryTime!)
+        let stockItems = cartList.filter({$0.hasDeliveryTime == false})
+        let readyItems = cartList.filter({$0.hasDeliveryTime == true})
+        var stockSuccess = false
+        var readySuccess = false
         
-        let order = Order(items: cartList, date: Timestamp(), hasDeliveryTime: hasDeliveryTime, deliveryTime: deliveryTimeStamp, purchaserId: userGlobal!.uid, purchaserName: userGlobal!.name, purchaserAddress: userGlobal!.address, storeId: store!.uid, storeName: store!.name, ownerId: store!.ownerId, hasDelivered: false,confirmationStatus: 1,comment: "")
+        print(stockItems.count)
+        print(readyItems.count)
         
-        PurchaseServices.instance.confirmPurchase(receipt: order) { (isSuccess) in
-            if isSuccess{
-                self.navigationController?.popToRootViewController(animated: true)
-            }
+        if stockItems.count > 0{
+            let deliveryTimeStamp = Timestamp.init(date: deliveryTime!)
+
+            let order = Order(items: stockItems, date: Timestamp(), hasDeliveryTime: false, deliveryTime: deliveryTimeStamp, purchaserId: userGlobal!.uid, purchaserName: userGlobal!.name, purchaserAddress: userGlobal!.address, storeId: store!.uid, storeName: store!.name, ownerId: store!.ownerId, hasDelivered: false,confirmationStatus: 1,comment: "")
+           stockSuccess = PurchaseServices.instance.confirmPurchase(receipt: order)
+
+//            PurchaseServices.instance.confirmPurchase(receipt: order) { (isSuccess) in
+//                if isSuccess{
+//                    stockSuccess = true
+//                    //                    self.navigationController?.popToRootViewController(animated: true)
+//                }
+//            }
         }
+//
+        if readyItems.count > 0{
+            let deliveryTimeStamp = Timestamp.init(date: deliveryTime!)
+
+            let order = Order(items: readyItems, date: Timestamp(), hasDeliveryTime: true, deliveryTime: deliveryTimeStamp, purchaserId: userGlobal!.uid, purchaserName: userGlobal!.name, purchaserAddress: userGlobal!.address, storeId: store!.uid, storeName: store!.name, ownerId: store!.ownerId, hasDelivered: false,confirmationStatus: 1,comment: "")
+
+            readySuccess = PurchaseServices.instance.confirmPurchase(receipt: order)
+//            PurchaseServices.instance.confirmPurchase(receipt: order) { (isSuccess) in
+//                if isSuccess{
+//                    readySuccess = true
+//                    //                    self.navigationController?.popToRootViewController(animated: true)
+//                }
+//            }
+        }
+//
+        if readySuccess == true || stockSuccess == true{
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+        
+        
     }
 
 }
