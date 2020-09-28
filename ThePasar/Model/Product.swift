@@ -49,16 +49,14 @@ class itemPurchasing: Codable{
     var productPrice:Double
     var itemCount:Int
     var hasDeliveryTime:Bool
-    var deliveryTime:Timestamp
     var colorClass:Int
     
-    init(productId:String,productName:String,productPrice:Double,itemCount:Int,hasDeliveryTime:Bool,deliveryTime:Timestamp,colorClass:Int) {
+    init(productId:String,productName:String,productPrice:Double,itemCount:Int,hasDeliveryTime:Bool,colorClass:Int) {
         self.productId = productId
         self.productName = productName
         self.productPrice = productPrice
         self.itemCount = itemCount
         self.hasDeliveryTime = hasDeliveryTime
-        self.deliveryTime = deliveryTime
         self.colorClass = colorClass
     }
 }
@@ -74,7 +72,7 @@ class Order: Codable{
     var storeName:String
     var ownerId:String
     var hasDelivered:Bool
-    var confirmationStatus:Int
+    var confirmationStatus:Int  //0 : rejected, 1: pending, 2: confirmed
     var comment:String
     
     init(items:[itemPurchasing],date:Timestamp,hasDeliveryTime:Bool,deliveryTime:Timestamp,purchaserId:String,purchaserName:String,purchaserAddress:String,storeId:String,storeName:String,ownerId:String,hasDelivered:Bool,confirmationStatus:Int,comment:String) {

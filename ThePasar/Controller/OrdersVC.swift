@@ -46,9 +46,13 @@ extension OrdersVC:UITableViewDelegate,UITableViewDataSource{
             cell.confirmBtn.isHidden = false
             if order?.confirmationStatus == 0{
                 cell.confirmBtn.titleLabel?.text = "Rejected"
+                cell.statusIcon.isHidden = false
+                cell.statusIcon.image = UIImage(named: "rejected")
             }else{
                 cell.confirmBtn.setTitle("Confirmed", for: .normal)
                 cell.confirmBtn.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+                cell.statusIcon.isHidden = false
+                cell.statusIcon.image = UIImage(named: "delivery")
             }
         }
         
@@ -67,7 +71,7 @@ extension OrdersVC:UITableViewDelegate,UITableViewDataSource{
         if selectedOrder.order?.confirmationStatus == 0{
             let rejectedPopup = rejectedCommentPopup()
             rejectedPopup.order = selectedOrder.order
-            rejectedPopup.modalPresentationStyle = .custom
+            rejectedPopup.modalPresentationStyle = .overCurrentContext
             present(rejectedPopup, animated: true, completion: nil)
         }
     }
@@ -77,8 +81,11 @@ extension OrdersVC:UITableViewDelegate,UITableViewDataSource{
 extension OrdersVC{
     func loadDatas(){
         OrderServices.instance.realtimeListUpdate2{ (orderlist) in
+            print(orderlist.count)
             self.ordersList = orderlist
             self.orderTable.reloadData()
         }
     }
 }
+
+

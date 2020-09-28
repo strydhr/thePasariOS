@@ -15,11 +15,13 @@ protocol confirmOrderDelegate{
     func confirmOrder(item:Receipts)
 }
 
+
 class orderHeader: UITableViewCell {
     @IBOutlet weak var deliveryTime: UILabel!
     @IBOutlet weak var deliveryAddress: UILabel!
     @IBOutlet weak var orderCount: UILabel!
-
+    @IBOutlet weak var statusIcon: UIImageView!
+    
     @IBOutlet weak var confirmBtn: UIButton!
     
     var delegate: rejectOrderDelegate?
@@ -32,7 +34,9 @@ class orderHeader: UITableViewCell {
         // Initialization code
         confirmBtn.layer.cornerRadius = 15
         confirmBtn.clipsToBounds = true
+        
     }
+    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

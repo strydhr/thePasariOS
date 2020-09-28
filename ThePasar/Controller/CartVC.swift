@@ -36,8 +36,6 @@ class CartVC: UIViewController {
         var stockSuccess = false
         var readySuccess = false
         
-        print(stockItems.count)
-        print(readyItems.count)
         
         if stockItems.count > 0{
             let deliveryTimeStamp = Timestamp.init(date: deliveryTime!)

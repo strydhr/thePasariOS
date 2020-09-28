@@ -102,10 +102,11 @@ extension ProductVC{
 extension ProductVC:updateCartDelegate{
     func updatedCart(items: [itemPurchasing], hasDelivery: Bool, sendBy: Date?) {
         cartItems = items
-        if hasDelivery{
+//        if hasDelivery{
             theresDeliveryTime = hasDelivery
             deliveryTime = sendBy
-        }
+            
+//        }
         btnHeightConstraint.constant = 40
     }
     

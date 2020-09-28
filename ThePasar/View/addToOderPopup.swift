@@ -56,7 +56,9 @@ class addToOderPopup: UIViewController {
     }
     
            @objc func donePickingTime(){
-            
+            breakfastBtn.isEnabled = true
+            lunchBtn.isEnabled = true
+            dinnerBtn.isEnabled = true
             timeTF.resignFirstResponder()
 
     //            timeTF.text = dateFormatter.string(from: timePicker.date)
@@ -73,8 +75,10 @@ class addToOderPopup: UIViewController {
             }
     
     @IBAction func breakfastBtnPressed(_ sender: UIButton) {
+        bfastTimePicker()
     }
     @IBAction func lunchBtnPressed(_ sender: UIButton) {
+        lunchTimePicker()
     }
     
     @IBAction func dinnerBtnPressed(_ sender: UIButton) {
@@ -186,11 +190,13 @@ extension addToOderPopup{
             dinnerBtn.backgroundColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
         }
     }
-    
-    func dinnerTimePicker(){
+    func bfastTimePicker(){
+        lunchBtn.isEnabled = false
+        dinnerBtn.isEnabled = false
         timeTF.isUserInteractionEnabled = true
         timePicker.delegate = self
         timePicker.dataSource = self
+        timeTF.text = ""
         
         timeTF.inputView = timePicker
         timeTF.placeholder = "Meals ready by.."
@@ -207,6 +213,71 @@ extension addToOderPopup{
         let currentTime = Date()
         let components = calendar.dateComponents([.hour, .month], from: currentTime)
         
+        category.removeAll()
+        for i in 7...10{
+            if i - components.hour! >= 2{
+                category.append("\(i):00")
+            }
+        }
+    }
+    
+    
+    func lunchTimePicker(){
+        breakfastBtn.isEnabled = false
+        dinnerBtn.isEnabled = false
+        timeTF.isUserInteractionEnabled = true
+        timePicker.delegate = self
+        timePicker.dataSource = self
+        timeTF.text = ""
+        
+        timeTF.inputView = timePicker
+        timeTF.placeholder = "Meals ready by.."
+        
+        let newToolbar = UIToolbar()
+        newToolbar.sizeToFit()
+
+
+        newToolbar.setItems([doneBtnTime], animated: false)
+        newToolbar.isUserInteractionEnabled = true
+        timeTF.inputAccessoryView = newToolbar
+
+        let calendar = Calendar.current
+        let currentTime = Date()
+        let components = calendar.dateComponents([.hour, .month], from: currentTime)
+
+        category.removeAll()
+        for i in 11...14{
+            if i - components.hour! >= 2{
+                category.append("\(i):00")
+            }
+        }
+    }
+    
+    
+    func dinnerTimePicker(){
+        breakfastBtn.isEnabled = false
+        lunchBtn.isEnabled = false
+        timeTF.isUserInteractionEnabled = true
+        timePicker.delegate = self
+        timePicker.dataSource = self
+        timeTF.text = ""
+        
+        timeTF.inputView = timePicker
+        timeTF.placeholder = "Meals ready by.."
+        
+        let newToolbar = UIToolbar()
+        newToolbar.sizeToFit()
+        
+        
+        newToolbar.setItems([doneBtnTime], animated: false)
+        newToolbar.isUserInteractionEnabled = true
+        timeTF.inputAccessoryView = newToolbar
+        
+        let calendar = Calendar.current
+        let currentTime = Date()
+        let components = calendar.dateComponents([.hour, .month], from: currentTime)
+        
+        category.removeAll()
         for i in 17...20{
             if i - components.hour! >= 2{
                 category.append("\(i):00")
@@ -241,7 +312,7 @@ extension addToOderPopup{
                 //
                 
                 
-                let updatedItem = itemPurchasing(productId: selectedProduct!.uid, productName: selectedProduct!.name, productPrice: selectedProduct!.price, itemCount: orderCount, hasDeliveryTime: true, deliveryTime: finalDateTimeStamp, colorClass: selectedProduct!.colorClass)
+                let updatedItem = itemPurchasing(productId: selectedProduct!.uid, productName: selectedProduct!.name, productPrice: selectedProduct!.price, itemCount: orderCount, hasDeliveryTime: true, colorClass: selectedProduct!.colorClass)
                 items.append(updatedItem)
                 deliveryTime = finalDate
                 delegate?.updatedCart(items: items, hasDelivery: hasDeliveryTime, sendBy: deliveryTime)
@@ -249,9 +320,12 @@ extension addToOderPopup{
                 
             }
         }else{
-            let updatedItem = itemPurchasing(productId: selectedProduct!.uid, productName: selectedProduct!.name, productPrice: selectedProduct!.price, itemCount: orderCount, hasDeliveryTime: false, deliveryTime: Timestamp.init(date: Date()), colorClass: selectedProduct!.colorClass)
+            let updatedItem = itemPurchasing(productId: selectedProduct!.uid, productName: selectedProduct!.name, productPrice: selectedProduct!.price, itemCount: orderCount, hasDeliveryTime: false, colorClass: selectedProduct!.colorClass)
             items.append(updatedItem)
-            deliveryTime = Date()
+            if !hasDeliveryTime{
+                deliveryTime = Date()
+            }
+
             delegate?.updatedCart(items: items, hasDelivery: hasDeliveryTime, sendBy: deliveryTime)
             dismiss(animated: true, completion: nil)
         }
