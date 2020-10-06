@@ -67,13 +67,13 @@ class OrderServices {
 //        }
 //
 //    }
-    func realtimeListUpdate2(requestComplete:@escaping(_ orderList:[OrderDocument])->()){
+    func realtimeListUpdate2(requestComplete:@escaping(_ orderList:[OrderDocument])->Void)->ListenerRegistration?{
         var orderList = [OrderDocument]()
         let todaysDate = Date()
         let calendar = Calendar.current
         let startOfDay = calendar.startOfDay(for: todaysDate)
         let dbRef = db.collection("orders").whereField("purchaserId", isEqualTo: (userGlobal?.uid)!).whereField("date", isGreaterThanOrEqualTo: startOfDay)
-        dbRef.addSnapshotListener { (snapshot, error) in
+        return dbRef.addSnapshotListener { (snapshot, error) in
             if error == nil{
                 guard let document = snapshot else {return}
                 document.documentChanges.forEach { (diff) in
@@ -89,7 +89,7 @@ class OrderServices {
                         }
                         
                     }
-                    
+                    print("new order")
                     requestComplete(orderList)
                 }
 //                if document.isEmpty{

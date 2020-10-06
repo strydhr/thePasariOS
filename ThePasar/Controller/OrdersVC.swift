@@ -7,22 +7,36 @@
 //
 
 import UIKit
+import Firebase
 
 class OrdersVC: UIViewController {
+    var listener: ListenerRegistration?
+    
     @IBOutlet weak var orderTable: UITableView!
     
     var ordersList = [OrderDocument]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadDatas()
+//        loadDatas()
         orderTable.delegate = self
         orderTable.dataSource = self
         orderTable.separatorStyle = .none
         orderTable.register(UINib(nibName: "orderHeader", bundle: nil), forCellReuseIdentifier: "orderHeader")
+        
+
     }
     
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        listener!.remove()
+    }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadDatas()
+    }
 
 
 }
@@ -80,11 +94,11 @@ extension OrdersVC:UITableViewDelegate,UITableViewDataSource{
 
 extension OrdersVC{
     func loadDatas(){
-        OrderServices.instance.realtimeListUpdate2{ (orderlist) in
-            print(orderlist.count)
+        
+        self.listener = OrderServices.instance.realtimeListUpdate2(requestComplete: { (orderlist) in
             self.ordersList = orderlist
             self.orderTable.reloadData()
-        }
+        })
     }
 }
 

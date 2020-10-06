@@ -110,8 +110,9 @@ class Receipts: Codable{
     var storeName:String
     var ownerId:String
     var hasDelivered:Bool
+    var orderId:String
     
-    init(items:[itemPurchasing],date:Timestamp,hasDeliveryTime:Bool,deliveryTime:Timestamp,purchaserId:String,purchaserName:String,purchaserAddress:String,storeId:String,storeName:String,ownerId:String,hasDelivered:Bool) {
+    init(items:[itemPurchasing],date:Timestamp,hasDeliveryTime:Bool,deliveryTime:Timestamp,purchaserId:String,purchaserName:String,purchaserAddress:String,storeId:String,storeName:String,ownerId:String,hasDelivered:Bool,orderId:String) {
         self.items = items
         self.date = date
         self.hasDeliveryTime = hasDeliveryTime
@@ -123,5 +124,6 @@ class Receipts: Codable{
         self.storeName = storeName
         self.ownerId = ownerId
         self.hasDelivered = hasDelivered
+        self.orderId = orderId
     }
 }

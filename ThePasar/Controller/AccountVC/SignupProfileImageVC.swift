@@ -16,6 +16,7 @@ class SignupProfileImageVC: UIViewController {
     @IBOutlet weak var userFullnameLabel: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var addressTF: UITextField!
+    @IBOutlet weak var unitNumberTF: UITextField!
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var searchbar: UISearchBar!
     @IBOutlet weak var resultTable: UITableView!
@@ -23,6 +24,7 @@ class SignupProfileImageVC: UIViewController {
     
     var fullname:String?
     var address:String?
+    var unitNo:String?
     var selectedImage: UIImage?
     var isProfilePicSet = false
     var latitude:Double?
@@ -93,7 +95,7 @@ class SignupProfileImageVC: UIViewController {
     }
     
     @IBAction func proceedBtnPressed(_ sender: UIButton) {
-        errorHandler(address: address!)
+        errorHandler(address: address!, unitNumber: unitNumberTF.text!)
     }
     /*
     // MARK: - Navigation
@@ -232,13 +234,16 @@ extension SignupProfileImageVC{
         addressTF.attributedPlaceholder = NSAttributedString(string: "Mailing Address", attributes: [NSAttributedString.Key.foregroundColor:UIColor.white])
     }
 
-    func errorHandler(address:String){
+    func errorHandler(address:String,unitNumber:String){
         if address.isEmpty{
             
         }else{
+            if unitNumber.isEmpty{
+                unitNo = ""
+            }
             SVProgressHUD.show()
             uploadImages(image: profileImage.image!, imageName: "profile") { (url) in
-                AuthServices.instance.addUserToDatabase(name: self.fullname!, address: address,lat:self.latitude!,lng: self.longitude!,geohash: self.geoHash!, profileImage: url) { (isSuccess) in
+                AuthServices.instance.addUserToDatabase(name: self.fullname!, address: address, unit: self.unitNo!,lat:self.latitude!,lng: self.longitude!,geohash: self.geoHash!, profileImage: url) { (isSuccess) in
                     if isSuccess{
                         let mainVC = self.storyboard?.instantiateViewController(withIdentifier: "loggedIn")
                         mainVC?.modalPresentationStyle = .fullScreen

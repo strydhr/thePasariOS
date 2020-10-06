@@ -15,6 +15,7 @@ class User: Codable {
     var name: String
     var phone:String
     var address: String
+    var unitNumber:String
     var l: [Double]
     var g:String
     var profileImage:String
@@ -22,11 +23,12 @@ class User: Codable {
     var isActive:Bool
     var deviceToken:String?
     
-    init(uid:String,name:String,phone:String,address:String,lat:Double,lng:Double,g:String,profileImage:String,isActivated:Bool,isActive:Bool) {
+    init(uid:String,name:String,phone:String,address:String,unitNumber:String,lat:Double,lng:Double,g:String,profileImage:String,isActivated:Bool,isActive:Bool) {
         self.uid = uid
         self.name = name
         self.phone = phone
         self.address = address
+        self.unitNumber = unitNumber
         self.l = [lat,lng]
         self.g = g
         self.profileImage = profileImage

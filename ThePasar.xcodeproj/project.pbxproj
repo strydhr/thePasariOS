@@ -25,6 +25,10 @@
 		D2506AE824D29A7100BF160B /* radiusSettingPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2506AE624D29A7100BF160B /* radiusSettingPopup.xib */; };
 		D2506AEB24D2AE7000BF160B /* addToOderPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2506AE924D2AE7000BF160B /* addToOderPopup.swift */; };
 		D2506AEC24D2AE7000BF160B /* addToOderPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2506AEA24D2AE7000BF160B /* addToOderPopup.xib */; };
+		D2508C092522166C006E1178 /* profileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2508C072522166C006E1178 /* profileCell.swift */; };
+		D2508C0A2522166C006E1178 /* profileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2508C082522166C006E1178 /* profileCell.xib */; };
+		D250EB3025231D45000FBB8C /* updateAddressPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D250EB2E25231D45000FBB8C /* updateAddressPopup.swift */; };
+		D250EB3125231D45000FBB8C /* updateAddressPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = D250EB2F25231D45000FBB8C /* updateAddressPopup.xib */; };
 		D2517119251C8E340064A237 /* rejectedReasonPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2517117251C8E330064A237 /* rejectedReasonPopup.swift */; };
 		D251711A251C8E340064A237 /* rejectedReasonPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2517118251C8E340064A237 /* rejectedReasonPopup.xib */; };
 		D251FDF624EBB190005B751F /* OrdersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D251FDF524EBB190005B751F /* OrdersVC.swift */; };
@@ -43,6 +47,7 @@
 		D254C03224D1610100E7C69E /* StoreServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D254C03124D1610100E7C69E /* StoreServices.swift */; };
 		D254C03524D164D100E7C69E /* storeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D254C03324D164D100E7C69E /* storeCell.swift */; };
 		D254C03624D164D100E7C69E /* storeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D254C03424D164D100E7C69E /* storeCell.xib */; };
+		D254DC7D2521E5EB002B7E17 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D254DC7C2521E5EB002B7E17 /* ProfileVC.swift */; };
 		D270EC8124C6C42100C9B3A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D270EC8024C6C42100C9B3A7 /* AppDelegate.swift */; };
 		D270EC8524C6C42100C9B3A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D270EC8424C6C42100C9B3A7 /* ViewController.swift */; };
 		D270EC8824C6C42200C9B3A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D270EC8624C6C42200C9B3A7 /* Main.storyboard */; };
@@ -72,6 +77,10 @@
 		D2506AE624D29A7100BF160B /* radiusSettingPopup.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = radiusSettingPopup.xib; sourceTree = "<group>"; };
 		D2506AE924D2AE7000BF160B /* addToOderPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addToOderPopup.swift; sourceTree = "<group>"; };
 		D2506AEA24D2AE7000BF160B /* addToOderPopup.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = addToOderPopup.xib; sourceTree = "<group>"; };
+		D2508C072522166C006E1178 /* profileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileCell.swift; sourceTree = "<group>"; };
+		D2508C082522166C006E1178 /* profileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = profileCell.xib; sourceTree = "<group>"; };
+		D250EB2E25231D45000FBB8C /* updateAddressPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = updateAddressPopup.swift; sourceTree = "<group>"; };
+		D250EB2F25231D45000FBB8C /* updateAddressPopup.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = updateAddressPopup.xib; sourceTree = "<group>"; };
 		D2517117251C8E330064A237 /* rejectedReasonPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rejectedReasonPopup.swift; sourceTree = "<group>"; };
 		D2517118251C8E340064A237 /* rejectedReasonPopup.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = rejectedReasonPopup.xib; sourceTree = "<group>"; };
 		D251FDF524EBB190005B751F /* OrdersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersVC.swift; sourceTree = "<group>"; };
@@ -90,6 +99,7 @@
 		D254C03124D1610100E7C69E /* StoreServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreServices.swift; sourceTree = "<group>"; };
 		D254C03324D164D100E7C69E /* storeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = storeCell.swift; sourceTree = "<group>"; };
 		D254C03424D164D100E7C69E /* storeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = storeCell.xib; sourceTree = "<group>"; };
+		D254DC7C2521E5EB002B7E17 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		D270EC7D24C6C42100C9B3A7 /* ThePasar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThePasar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D270EC8024C6C42100C9B3A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D270EC8424C6C42100C9B3A7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -209,6 +219,7 @@
 				D2506AE324D2839D00BF160B /* ProductVC.swift */,
 				D253969324D93833004665E3 /* CartVC.swift */,
 				D251FDF524EBB190005B751F /* OrdersVC.swift */,
+				D254DC7C2521E5EB002B7E17 /* ProfileVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -242,6 +253,10 @@
 				D251FDFE24EBD214005B751F /* rejectedCommentPopup.xib */,
 				D2517117251C8E330064A237 /* rejectedReasonPopup.swift */,
 				D2517118251C8E340064A237 /* rejectedReasonPopup.xib */,
+				D2508C072522166C006E1178 /* profileCell.swift */,
+				D2508C082522166C006E1178 /* profileCell.xib */,
+				D250EB2E25231D45000FBB8C /* updateAddressPopup.swift */,
+				D250EB2F25231D45000FBB8C /* updateAddressPopup.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -332,6 +347,8 @@
 				D2506AE224D2764500BF160B /* productCell.xib in Resources */,
 				D2506AEC24D2AE7000BF160B /* addToOderPopup.xib in Resources */,
 				D270EC8A24C6C43900C9B3A7 /* Assets.xcassets in Resources */,
+				D2508C0A2522166C006E1178 /* profileCell.xib in Resources */,
+				D250EB3125231D45000FBB8C /* updateAddressPopup.xib in Resources */,
 				D270EC8824C6C42200C9B3A7 /* Main.storyboard in Resources */,
 				D251711A251C8E340064A237 /* rejectedReasonPopup.xib in Resources */,
 				D251FDFA24EBB4CD005B751F /* orderHeader.xib in Resources */,
@@ -404,6 +421,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D254DC7D2521E5EB002B7E17 /* ProfileVC.swift in Sources */,
 				D25283AF24DA689A00325978 /* PurchaseServices.swift in Sources */,
 				D251FDF624EBB190005B751F /* OrdersVC.swift in Sources */,
 				D2506AE124D2764500BF160B /* productCell.swift in Sources */,
@@ -419,7 +437,9 @@
 				D2517119251C8E340064A237 /* rejectedReasonPopup.swift in Sources */,
 				D24C4CB924C7F346005F27E4 /* ImageCache.swift in Sources */,
 				D270EC8524C6C42100C9B3A7 /* ViewController.swift in Sources */,
+				D250EB3025231D45000FBB8C /* updateAddressPopup.swift in Sources */,
 				D270EC8124C6C42100C9B3A7 /* AppDelegate.swift in Sources */,
+				D2508C092522166C006E1178 /* profileCell.swift in Sources */,
 				D24EF9C724CA9792005937C5 /* MainTabVC.swift in Sources */,
 				D253969424D93833004665E3 /* CartVC.swift in Sources */,
 				D24C4CBC24C7F409005F27E4 /* AuthServices.swift in Sources */,
