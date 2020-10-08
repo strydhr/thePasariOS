@@ -92,24 +92,41 @@ class OrderServices {
                     print("new order")
                     requestComplete(orderList)
                 }
-//                if document.isEmpty{
-//                    requestComplete(orderList)
-//                }else{
-//                    for items in document{
-//                        let docData = items.data()
-//                        print(docData)
-//                        let receipts = try! FirestoreDecoder().decode(Receipts.self, from: docData)
-//                        orderList.append(receipts)
-//                        
-//                        
-//                    }
-//                    requestComplete(orderList)
-//                    
-//                }
             }
         }
         
     }
+    
+    func realtimeDeliveryUpdate(requestComplete:@escaping(_ receiptList:[ReceiptDocument])->Void)->ListenerRegistration?{
+        var receiptList = [ReceiptDocument]()
+        let todaysDate = Date()
+        let calendar = Calendar.current
+        let startOfDay = calendar.startOfDay(for: todaysDate)
+        let dbRef = db.collection("receipt").whereField("purchaserId", isEqualTo: (userGlobal?.uid)!).whereField("caseClosed", isEqualTo: true)
+        return dbRef.addSnapshotListener { (snapshot, error) in
+            if error == nil{
+                guard let document = snapshot else {return}
+                document.documentChanges.forEach { (diff) in
+                    if(diff.type == .added){
+                        let receipt = try! FirestoreDecoder().decode(Receipts.self, from: diff.document.data())
+                        let receiptDoc = ReceiptDocument(documentId: diff.document.documentID, receipt: receipt)
+                        receiptList.append(receiptDoc)
+                    }
+                    if(diff.type == .modified){
+                        let modifiedReceipt = try! FirestoreDecoder().decode(Receipts.self, from: diff.document.data())
+                        if let modifiedOrderIndex = receiptList.firstIndex(where: {$0.documentId == diff.document.documentID}){
+                            receiptList[modifiedOrderIndex].receipt = modifiedReceipt
+                        }
+                        
+                    }
+                    print("new order")
+                    requestComplete(receiptList)
+                }
+            }
+        }
+    }
+    
+    
     func confirmOrder(order:OrderDocument,requestComplete:@escaping(_ status:Bool)->()){
         db.collection("orders").document(order.documentId!).updateData(["isConfirmed":true]) { (error) in
             if error == nil{

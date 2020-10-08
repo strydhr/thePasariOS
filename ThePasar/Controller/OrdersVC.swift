@@ -11,10 +11,12 @@ import Firebase
 
 class OrdersVC: UIViewController {
     var listener: ListenerRegistration?
+    var listener2: ListenerRegistration?
     
     @IBOutlet weak var orderTable: UITableView!
     
     var ordersList = [OrderDocument]()
+    var receiptList = [ReceiptDocument]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +50,9 @@ extension OrdersVC:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "orderHeader")as? orderHeader else {return UITableViewCell()}
         let order = ordersList[indexPath.row].order
+        //
+        let orderDoc = ordersList[indexPath.row]
+        //
         cell.deliveryAddress.text = order?.storeName
         var totalItems = 0
         let items = order?.items
@@ -63,10 +68,19 @@ extension OrdersVC:UITableViewDelegate,UITableViewDataSource{
                 cell.statusIcon.isHidden = false
                 cell.statusIcon.image = UIImage(named: "rejected")
             }else{
-                cell.confirmBtn.setTitle("Confirmed", for: .normal)
-                cell.confirmBtn.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
-                cell.statusIcon.isHidden = false
-                cell.statusIcon.image = UIImage(named: "delivery")
+                
+                //
+                if let sentItem = receiptList.firstIndex(where: {$0.receipt?.orderId == orderDoc.documentId}){
+                    cell.confirmBtn.setTitle("Delivered", for: .normal)
+                    
+                }else{
+                    
+                    cell.confirmBtn.setTitle("Confirmed", for: .normal)
+                    cell.confirmBtn.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+                    cell.statusIcon.isHidden = false
+                    cell.statusIcon.image = UIImage(named: "delivery")
+                }
+                //
             }
         }
         
@@ -97,6 +111,13 @@ extension OrdersVC{
         
         self.listener = OrderServices.instance.realtimeListUpdate2(requestComplete: { (orderlist) in
             self.ordersList = orderlist
+            self.orderTable.reloadData()
+        })
+        
+        self.listener2 = OrderServices.instance.realtimeDeliveryUpdate(requestComplete: { (receiptlist) in
+            print("updated...")
+            print(receiptlist.count)
+            self.receiptList = receiptlist
             self.orderTable.reloadData()
         })
     }
