@@ -18,7 +18,7 @@ class OrderServices {
     func listMyOders(requestComplete:@escaping(_ orderList:[Receipts])->()){
         var orderList = [Receipts]()
         
-        let dbRef = db.collection("receipts").whereField("ownerId", isEqualTo: (userGlobal?.uid)!).whereField("hasDelivered", isEqualTo: false)
+        let dbRef = db.collection("receipt").whereField("ownerId", isEqualTo: (userGlobal?.uid)!).whereField("hasDelivered", isEqualTo: false)
         dbRef.getDocuments { (snapshot, error) in
             print(snapshot?.count)
             if error == nil{

@@ -796,11 +796,11 @@
             </objects>
             <point key="canvasLocation" x="1000.0000000000001" y="115.84821428571428"/>
         </scene>
-        <!--Main-->
+        <!--Navigation Controller-->
         <scene sceneID="HMI-Ti-uIs">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QUm-8y-vv3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Main" id="UJl-UL-myZ"/>
+                    <tabBarItem key="tabBarItem" title="" image="Home" selectedImage="HomeSelected" id="UJl-UL-myZ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mJW-M2-Kck">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -852,7 +852,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZZW-2J-uhl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7031.884057971015" y="850.44642857142856"/>
+            <point key="canvasLocation" x="7021.739130434783" y="840.40178571428567"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="HAT-6S-bjI">
@@ -866,8 +866,9 @@
                     </tabBar>
                     <connections>
                         <segue destination="QUm-8y-vv3" kind="relationship" relationship="viewControllers" id="6ww-KZ-37A"/>
-                        <segue destination="a6S-O1-a27" kind="relationship" relationship="viewControllers" id="a7X-Oo-ix8"/>
                         <segue destination="YfQ-KV-0XB" kind="relationship" relationship="viewControllers" id="WmB-eA-vp9"/>
+                        <segue destination="oCi-RQ-Sxi" kind="relationship" relationship="viewControllers" id="l6h-sv-cmg"/>
+                        <segue destination="v3o-BH-JJ9" kind="relationship" relationship="viewControllers" id="ds1-UL-ceX"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JsQ-bg-fUE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -913,30 +914,50 @@
             </objects>
             <point key="canvasLocation" x="6018.840579710145" y="1532.8125"/>
         </scene>
-        <!--Orders-->
-        <scene sceneID="LtH-ru-LU6">
+        <!--HistoryVC-->
+        <scene sceneID="R4g-ha-stQ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="a6S-O1-a27" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Orders" id="C56-pF-lBD"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6dX-Dy-Iss">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
+                <viewController id="sM1-eN-kWP" customClass="HistoryVC" customModule="ThePasar" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="afI-6W-EGy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="z19-f7-J8f">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" red="0.2784313725" green="0.69803921570000005" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9vA-vh-MpI">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Bit-1Z-HQf"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="9vA-vh-MpI" firstAttribute="top" secondItem="Bit-1Z-HQf" secondAttribute="top" id="0Gr-rg-R8N"/>
+                            <constraint firstItem="z19-f7-J8f" firstAttribute="trailing" secondItem="Bit-1Z-HQf" secondAttribute="trailing" id="4aB-53-qrp"/>
+                            <constraint firstItem="z19-f7-J8f" firstAttribute="top" secondItem="afI-6W-EGy" secondAttribute="top" id="Qrq-Tv-nFJ"/>
+                            <constraint firstItem="z19-f7-J8f" firstAttribute="leading" secondItem="Bit-1Z-HQf" secondAttribute="leading" id="UXV-fH-b9b"/>
+                            <constraint firstItem="Bit-1Z-HQf" firstAttribute="bottom" secondItem="9vA-vh-MpI" secondAttribute="bottom" id="ef8-uB-W37"/>
+                            <constraint firstItem="Bit-1Z-HQf" firstAttribute="trailing" secondItem="9vA-vh-MpI" secondAttribute="trailing" id="m3e-XI-79S"/>
+                            <constraint firstItem="9vA-vh-MpI" firstAttribute="leading" secondItem="Bit-1Z-HQf" secondAttribute="leading" id="nr7-Oi-1ox"/>
+                            <constraint firstAttribute="bottom" secondItem="z19-f7-J8f" secondAttribute="bottom" id="ys5-DH-m1J"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="iYB-S7-eOh"/>
                     <connections>
-                        <segue destination="nBK-7E-Kay" kind="relationship" relationship="rootViewController" id="O2T-hd-fxv"/>
+                        <outlet property="historyTable" destination="9vA-vh-MpI" id="OGE-cw-s9Z"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HW7-DF-jjl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="myk-lw-Dha" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6121.739130434783" y="850.44642857142856"/>
+            <point key="canvasLocation" x="6019" y="2224"/>
         </scene>
-        <!--Profile-->
+        <!--Navigation Controller-->
         <scene sceneID="AZX-rZ-DkM">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YfQ-KV-0XB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="7wS-IK-KEV"/>
+                    <tabBarItem key="tabBarItem" title="" image="Profile_1" selectedImage="ProfileSelected" id="7wS-IK-KEV"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gOz-Em-pJs">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -951,13 +972,59 @@
             </objects>
             <point key="canvasLocation" x="5108.695652173913" y="1532.8125"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="LuV-yz-Cd2">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oCi-RQ-Sxi" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="History" selectedImage="HistorySelected" id="vjd-uk-64b"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="f0D-XX-cpe">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="sM1-eN-kWP" kind="relationship" relationship="rootViewController" id="Udn-gN-ef7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zum-de-Hac" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5107" y="2224"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="m2O-bs-fxC">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="v3o-BH-JJ9" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="order" selectedImage="OrderSelected" id="kyw-sq-pmp"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="v9i-VW-JoV">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="nBK-7E-Kay" kind="relationship" relationship="rootViewController" id="s7l-dK-nb8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pmD-S4-rcU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6111.594202898551" y="840.40178571428567"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="History" width="38.5" height="38"/>
+        <image name="HistorySelected" width="38.5" height="38"/>
+        <image name="Home" width="38.5" height="38.5"/>
+        <image name="HomeSelected" width="38.5" height="38.5"/>
+        <image name="OrderSelected" width="38.5" height="38.5"/>
+        <image name="ProfileSelected" width="38.5" height="38.5"/>
+        <image name="Profile_1" width="38.5" height="38.5"/>
         <image name="background" width="1920" height="1080"/>
         <image name="defaultImage" width="222" height="222"/>
         <image name="email" width="23" height="27"/>
         <image name="logo" width="225" height="183"/>
         <image name="nextBtn" width="94" height="94"/>
+        <image name="order" width="36" height="33.5"/>
         <image name="password" width="21" height="31"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

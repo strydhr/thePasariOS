@@ -38,8 +38,12 @@ extension ProfileVC:UITableViewDelegate,UITableViewDataSource{
             cell.contentLabel.text = userGlobal?.name
         }else if indexPath.row == 1{
             let address = userGlobal?.address
-            let wantedString = address?.components(separatedBy: ",")
+            let wantedString = address?.components(separatedBy: ", ")
             var add = ""
+            if userGlobal?.unitNumber != ""{
+                add = "\((userGlobal?.unitNumber)!)\n"
+            }
+            
             for word in wantedString!{
                 add.append("\(word)\n")
             }

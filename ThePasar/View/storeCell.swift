@@ -12,6 +12,7 @@ class storeCell: UITableViewCell {
     @IBOutlet weak var storeImage: UIImageView!
     @IBOutlet weak var storeLabel: UILabel!
     @IBOutlet weak var storeType: UILabel!
+    @IBOutlet weak var storeAddress: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

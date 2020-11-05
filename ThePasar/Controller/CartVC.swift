@@ -39,8 +39,14 @@ class CartVC: UIViewController {
         
         if stockItems.count > 0{
             let deliveryTimeStamp = Timestamp.init(date: deliveryTime!)
+            var address = ""
+            if userGlobal?.unitNumber != ""{
+                address = userGlobal!.unitNumber + ", " + userGlobal!.address
+            }else{
+                address = userGlobal!.address
+            }
 
-            let order = Order(items: stockItems, date: Timestamp(), hasDeliveryTime: false, deliveryTime: deliveryTimeStamp, purchaserId: userGlobal!.uid, purchaserName: userGlobal!.name, purchaserAddress: userGlobal!.address, storeId: store!.uid, storeName: store!.name, ownerId: store!.ownerId, hasDelivered: false,confirmationStatus: 1,comment: "")
+            let order = Order(items: stockItems, date: Timestamp(), hasDeliveryTime: false, deliveryTime: deliveryTimeStamp, purchaserId: userGlobal!.uid, purchaserName: userGlobal!.name, purchaserAddress: address, storeId: store!.uid, storeName: store!.name, ownerId: store!.ownerId, hasDelivered: false,confirmationStatus: 1,comment: "")
            stockSuccess = PurchaseServices.instance.confirmPurchase(receipt: order)
 
 //            PurchaseServices.instance.confirmPurchase(receipt: order) { (isSuccess) in
@@ -53,8 +59,14 @@ class CartVC: UIViewController {
 //
         if readyItems.count > 0{
             let deliveryTimeStamp = Timestamp.init(date: deliveryTime!)
+            var address = ""
+            if userGlobal?.unitNumber != ""{
+                address = userGlobal!.unitNumber + ", " + userGlobal!.address
+            }else{
+                address = userGlobal!.address
+            }
 
-            let order = Order(items: readyItems, date: Timestamp(), hasDeliveryTime: true, deliveryTime: deliveryTimeStamp, purchaserId: userGlobal!.uid, purchaserName: userGlobal!.name, purchaserAddress: userGlobal!.address, storeId: store!.uid, storeName: store!.name, ownerId: store!.ownerId, hasDelivered: false,confirmationStatus: 1,comment: "")
+            let order = Order(items: readyItems, date: Timestamp(), hasDeliveryTime: true, deliveryTime: deliveryTimeStamp, purchaserId: userGlobal!.uid, purchaserName: userGlobal!.name, purchaserAddress: address, storeId: store!.uid, storeName: store!.name, ownerId: store!.ownerId, hasDelivered: false,confirmationStatus: 1,comment: "")
 
             readySuccess = PurchaseServices.instance.confirmPurchase(receipt: order)
 //            PurchaseServices.instance.confirmPurchase(receipt: order) { (isSuccess) in

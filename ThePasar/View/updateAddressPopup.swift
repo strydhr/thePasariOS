@@ -24,7 +24,7 @@ class updateAddressPopup: UIViewController {
     
     var delegate:doneUpdateProfileDelegate?
     
-    var address:String?
+    var mainAddress:String?
     var unitNo:String?
     var latitude:Double?
     var longitude:Double?
@@ -56,7 +56,8 @@ class updateAddressPopup: UIViewController {
 
         let filter = GMSAutocompleteFilter()
         filter.country = "MY"
-        filter.type = .address
+//        filter.type = .establishment
+//        filter.type = .address
         autocompleteController.autocompleteFilter = filter
 
         present(autocompleteController, animated: true, completion: nil)
@@ -65,7 +66,7 @@ class updateAddressPopup: UIViewController {
 
 
     @IBAction func confirmBtnPressed(_ sender: UIButton) {
-        errorHandler(address: address!, unitNumber: unitNumberTF.text!)
+        errorHandler(address: mainAddress!, unitNumber: unitNumberTF.text!)
     }
     
 }
@@ -79,12 +80,13 @@ extension updateAddressPopup{
                 unitNo = ""
             }else{
                 unitNo = unitNumber
+                mainAddress = addressTF.text! + ", " + mainAddress!
             }
             SVProgressHUD.show()
-            AuthServices.instance.updateUserInfo(newAddress: address, newUnitNumber: unitNo!, lat: self.latitude!, lng: self.longitude!, geohash: self.geoHash!) { (isSuccess) in
+            AuthServices.instance.updateUserInfo(newAddress: mainAddress!, newUnitNumber: unitNo!, lat: self.latitude!, lng: self.longitude!, geohash: self.geoHash!) { [self] (isSuccess) in
                 if isSuccess{
                     SVProgressHUD.dismiss()
-                    userGlobal?.address = address
+                    userGlobal?.address = mainAddress!
                     userGlobal?.unitNumber = self.unitNo!
                     self.delegate?.updatedProfile(user: userGlobal!)
                     self.dismiss(animated: true, completion: nil)
@@ -98,7 +100,9 @@ extension updateAddressPopup{
 extension updateAddressPopup:GMSAutocompleteViewControllerDelegate{
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         addressTF.text = place.name
-        address = place.formattedAddress
+        print(place.name)
+        mainAddress = place.formattedAddress
+        print(place.formattedAddress)
         latitude = place.coordinate.latitude
         longitude = place.coordinate.longitude
         geoHash = place.coordinate.geohash(length: 10)

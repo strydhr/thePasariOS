@@ -29,6 +29,12 @@
 		D2508C0A2522166C006E1178 /* profileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2508C082522166C006E1178 /* profileCell.xib */; };
 		D250EB3025231D45000FBB8C /* updateAddressPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D250EB2E25231D45000FBB8C /* updateAddressPopup.swift */; };
 		D250EB3125231D45000FBB8C /* updateAddressPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = D250EB2F25231D45000FBB8C /* updateAddressPopup.xib */; };
+		D2516458252EEB3B00B4C16D /* HistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2516457252EEB3B00B4C16D /* HistoryVC.swift */; };
+		D251645C252EFF2B00B4C16D /* receiptHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = D251645A252EFF2A00B4C16D /* receiptHeader.xib */; };
+		D251645D252EFF2B00B4C16D /* receiptHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D251645B252EFF2B00B4C16D /* receiptHeader.swift */; };
+		D2516460252F089B00B4C16D /* ComplaintServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D251645F252F089B00B4C16D /* ComplaintServices.swift */; };
+		D2516464252F0A0800B4C16D /* lodgeComplaintPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2516462252F0A0800B4C16D /* lodgeComplaintPopup.swift */; };
+		D2516465252F0A0800B4C16D /* lodgeComplaintPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2516463252F0A0800B4C16D /* lodgeComplaintPopup.xib */; };
 		D2517119251C8E340064A237 /* rejectedReasonPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2517117251C8E330064A237 /* rejectedReasonPopup.swift */; };
 		D251711A251C8E340064A237 /* rejectedReasonPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2517118251C8E340064A237 /* rejectedReasonPopup.xib */; };
 		D251FDF624EBB190005B751F /* OrdersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D251FDF524EBB190005B751F /* OrdersVC.swift */; };
@@ -81,6 +87,12 @@
 		D2508C082522166C006E1178 /* profileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = profileCell.xib; sourceTree = "<group>"; };
 		D250EB2E25231D45000FBB8C /* updateAddressPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = updateAddressPopup.swift; sourceTree = "<group>"; };
 		D250EB2F25231D45000FBB8C /* updateAddressPopup.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = updateAddressPopup.xib; sourceTree = "<group>"; };
+		D2516457252EEB3B00B4C16D /* HistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryVC.swift; sourceTree = "<group>"; };
+		D251645A252EFF2A00B4C16D /* receiptHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = receiptHeader.xib; sourceTree = "<group>"; };
+		D251645B252EFF2B00B4C16D /* receiptHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = receiptHeader.swift; sourceTree = "<group>"; };
+		D251645F252F089B00B4C16D /* ComplaintServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplaintServices.swift; sourceTree = "<group>"; };
+		D2516462252F0A0800B4C16D /* lodgeComplaintPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lodgeComplaintPopup.swift; sourceTree = "<group>"; };
+		D2516463252F0A0800B4C16D /* lodgeComplaintPopup.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = lodgeComplaintPopup.xib; sourceTree = "<group>"; };
 		D2517117251C8E330064A237 /* rejectedReasonPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rejectedReasonPopup.swift; sourceTree = "<group>"; };
 		D2517118251C8E340064A237 /* rejectedReasonPopup.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = rejectedReasonPopup.xib; sourceTree = "<group>"; };
 		D251FDF524EBB190005B751F /* OrdersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersVC.swift; sourceTree = "<group>"; };
@@ -150,6 +162,7 @@
 				D254C03124D1610100E7C69E /* StoreServices.swift */,
 				D24C4CBB24C7F409005F27E4 /* AuthServices.swift */,
 				D25283AE24DA689A00325978 /* PurchaseServices.swift */,
+				D251645F252F089B00B4C16D /* ComplaintServices.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -220,6 +233,7 @@
 				D253969324D93833004665E3 /* CartVC.swift */,
 				D251FDF524EBB190005B751F /* OrdersVC.swift */,
 				D254DC7C2521E5EB002B7E17 /* ProfileVC.swift */,
+				D2516457252EEB3B00B4C16D /* HistoryVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -237,6 +251,8 @@
 		D270EC9824C6CECC00C9B3A7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D251645B252EFF2B00B4C16D /* receiptHeader.swift */,
+				D251645A252EFF2A00B4C16D /* receiptHeader.xib */,
 				D251FDF724EBB4CC005B751F /* orderHeader.swift */,
 				D251FDF824EBB4CD005B751F /* orderHeader.xib */,
 				D2506ADF24D2764400BF160B /* productCell.swift */,
@@ -257,6 +273,8 @@
 				D2508C082522166C006E1178 /* profileCell.xib */,
 				D250EB2E25231D45000FBB8C /* updateAddressPopup.swift */,
 				D250EB2F25231D45000FBB8C /* updateAddressPopup.xib */,
+				D2516462252F0A0800B4C16D /* lodgeComplaintPopup.swift */,
+				D2516463252F0A0800B4C16D /* lodgeComplaintPopup.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -346,11 +364,13 @@
 				D270EC8D24C6C43900C9B3A7 /* LaunchScreen.storyboard in Resources */,
 				D2506AE224D2764500BF160B /* productCell.xib in Resources */,
 				D2506AEC24D2AE7000BF160B /* addToOderPopup.xib in Resources */,
+				D251645C252EFF2B00B4C16D /* receiptHeader.xib in Resources */,
 				D270EC8A24C6C43900C9B3A7 /* Assets.xcassets in Resources */,
 				D2508C0A2522166C006E1178 /* profileCell.xib in Resources */,
 				D250EB3125231D45000FBB8C /* updateAddressPopup.xib in Resources */,
 				D270EC8824C6C42200C9B3A7 /* Main.storyboard in Resources */,
 				D251711A251C8E340064A237 /* rejectedReasonPopup.xib in Resources */,
+				D2516465252F0A0800B4C16D /* lodgeComplaintPopup.xib in Resources */,
 				D251FDFA24EBB4CD005B751F /* orderHeader.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -439,17 +459,21 @@
 				D270EC8524C6C42100C9B3A7 /* ViewController.swift in Sources */,
 				D250EB3025231D45000FBB8C /* updateAddressPopup.swift in Sources */,
 				D270EC8124C6C42100C9B3A7 /* AppDelegate.swift in Sources */,
+				D2516464252F0A0800B4C16D /* lodgeComplaintPopup.swift in Sources */,
 				D2508C092522166C006E1178 /* profileCell.swift in Sources */,
+				D2516458252EEB3B00B4C16D /* HistoryVC.swift in Sources */,
 				D24EF9C724CA9792005937C5 /* MainTabVC.swift in Sources */,
 				D253969424D93833004665E3 /* CartVC.swift in Sources */,
 				D24C4CBC24C7F409005F27E4 /* AuthServices.swift in Sources */,
 				D24C4CBF24C82057005F27E4 /* Constant.swift in Sources */,
 				D24C4CB824C7F346005F27E4 /* RoundImage.swift in Sources */,
+				D251645D252EFF2B00B4C16D /* receiptHeader.swift in Sources */,
 				D254C03524D164D100E7C69E /* storeCell.swift in Sources */,
 				D24C4CB224C7F094005F27E4 /* LoginVC.swift in Sources */,
 				D254C02C24D14E7500E7C69E /* GeoHash.swift in Sources */,
 				D251FDF924EBB4CD005B751F /* orderHeader.swift in Sources */,
 				D2506AE724D29A7100BF160B /* radiusSettingPopup.swift in Sources */,
+				D2516460252F089B00B4C16D /* ComplaintServices.swift in Sources */,
 				D254C02F24D1596100E7C69E /* Product.swift in Sources */,
 				D254C03224D1610100E7C69E /* StoreServices.swift in Sources */,
 				D253969724D94629004665E3 /* cartCell.swift in Sources */,

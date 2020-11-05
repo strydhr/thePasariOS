@@ -91,7 +91,7 @@ extension MainTabVC: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 91
+        return 118
         
     }
     
@@ -101,6 +101,9 @@ extension MainTabVC: UITableViewDelegate, UITableViewDataSource{
         cell.storeImage.cacheImage(imageUrl: store!.profileImage)
         cell.storeLabel.text = store?.name
         cell.storeType.text = store?.type
+        
+        cell.storeAddress.numberOfLines = 0
+        cell.storeAddress.text = store?.location
         
         return cell
     }
