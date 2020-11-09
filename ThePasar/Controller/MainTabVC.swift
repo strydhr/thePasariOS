@@ -12,7 +12,20 @@ import CoreLocation
 import MapKit
 
 class MainTabVC: UIViewController {
+    // First Timers
+    @IBOutlet weak var mainContainer: UIView!
+    @IBOutlet weak var firstBlinking: UIImageView!
+    @IBOutlet weak var firstHint: UIView!
+    
+    @IBOutlet weak var secondHint: UIView!
+    @IBOutlet weak var secondBlinking: UIImageView!
+    
+    var page = 1
+    let defaults = UserDefaults.standard
+    //
+    
     @IBOutlet weak var storeTable: UITableView!
+    
     
     var settings = UIBarButtonItem()
     
@@ -26,7 +39,15 @@ class MainTabVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let isFirstTime = UserDefaults.exist(key: "mainTabHintDone")
+        print(isFirstTime)
+        if isFirstTime == false{
+            firstTimeHelper()
+        }
+        
         gpsAuthorization()
+        
+        mainContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(nextHint)))
         
         settings = UIBarButtonItem(image: UIImage(named: "setting"), style: .done, target: self, action: #selector(radiusSetting))
         navigationItem.rightBarButtonItems = [settings]
@@ -52,6 +73,19 @@ class MainTabVC: UIViewController {
         settings.delegate = self
         present(settings, animated: true, completion: nil)
     }
+    
+    @objc func nextHint(){
+        if page == 1{
+            firstHint.isHidden = true
+            secondHint.isHidden = false
+            page = 2
+        }else if page == 2{
+            secondHint.isHidden = true
+            mainContainer.isHidden = true
+            defaults.set(true, forKey: "mainTabHintDone")
+            
+        }
+    }
 
 }
 
@@ -70,6 +104,23 @@ extension MainTabVC{
             self.storeList = storelist
             self.storeTable.reloadData()
         }
+    }
+    
+    func firstTimeHelper(){
+        mainContainer.isHidden = false
+        firstHint.isHidden = false
+        secondHint.isHidden = true
+        page = 1
+        
+        self.secondBlinking.alpha = 0
+        self.firstBlinking.alpha = 0
+        UIView.animate(withDuration: 1, delay: 0.0, options: [.curveLinear, .repeat, .autoreverse]) {
+            self.firstBlinking.alpha = 1
+            self.secondBlinking.alpha = 1
+        } completion: { (success) in
+            
+        }
+
     }
 }
 

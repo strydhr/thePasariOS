@@ -97,6 +97,17 @@ extension ProductVC{
             btnHeightConstraint.constant = 0
         }
     }
+    
+    func enableProceedBtn(){
+        if productList.count > 0{
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn) {
+                self.btnHeightConstraint.constant = 40
+            } completion: { (isSuccess) in
+                self.proceedBtn.isHidden = false
+            }
+
+        }
+    }
 }
 
 extension ProductVC:updateCartDelegate{
@@ -107,7 +118,7 @@ extension ProductVC:updateCartDelegate{
             deliveryTime = sendBy
             
 //        }
-        btnHeightConstraint.constant = 40
+       enableProceedBtn()
     }
     
     

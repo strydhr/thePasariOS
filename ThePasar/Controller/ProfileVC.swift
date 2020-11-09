@@ -12,6 +12,8 @@ import Firebase
 class ProfileVC: UIViewController {
     @IBOutlet weak var profileTable: UITableView!
     
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         profileTable.delegate = self
@@ -29,7 +31,7 @@ class ProfileVC: UIViewController {
 }
 extension ProfileVC:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -51,8 +53,11 @@ extension ProfileVC:UITableViewDelegate,UITableViewDataSource{
             cell.editBtn.isHidden = false
             cell.delegate = self
         }else if indexPath.row == 2{
+            cell.contentLabel.text = "Enable Hints"
+        }else if indexPath.row == 3{
             cell.contentLabel.text = "Log Out"
         }
+        
         
         return cell
     }
@@ -65,6 +70,11 @@ extension ProfileVC:UITableViewDelegate,UITableViewDataSource{
         tableView.deselectRow(at: indexPath, animated: true)
         switch indexPath.row {
         case 2:
+            let domain = Bundle.main.bundleIdentifier
+            defaults.removePersistentDomain(forName: domain!)
+            defaults.synchronize()
+//            UserDefaults.clear()
+        case 3:
             let logOutPopUP = UIAlertController(title: "Logout?", message: "Are you sure you want to log out?", preferredStyle: .alert)
             logOutPopUP.addAction(UIAlertAction(title: "Logout", style: .default, handler: { (buttonTapped) in
                 do{
@@ -108,4 +118,16 @@ extension ProfileVC:editProfileDetailsDelegate,doneUpdateProfileDelegate{
     }
     
     
+}
+
+extension UserDefaults{
+    class func clear(){
+        guard let domain = Bundle.main.bundleIdentifier else {return}
+        standard.removePersistentDomain(forName: domain)
+        standard.synchronize()
+    }
+    
+    class func exist(key:String)->Bool {
+        return UserDefaults.standard.object(forKey: key) != nil
+    }
 }
