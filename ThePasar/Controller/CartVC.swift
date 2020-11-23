@@ -46,7 +46,7 @@ class CartVC: UIViewController {
                 address = userGlobal!.address
             }
 
-            let order = Order(items: stockItems, date: Timestamp(), hasDeliveryTime: false, deliveryTime: deliveryTimeStamp, purchaserId: userGlobal!.uid, purchaserName: userGlobal!.name, purchaserAddress: address, storeId: store!.uid, storeName: store!.name, ownerId: store!.ownerId, hasDelivered: false,confirmationStatus: 1,comment: "")
+            let order = Order(items: stockItems, date: Timestamp(), hasDeliveryTime: false, deliveryTime: deliveryTimeStamp, purchaserId: userGlobal!.uid, purchaserName: userGlobal!.name, purchaserAddress: address,lat: userGlobal!.l[0], lng: userGlobal!.l[1], purchaserPhone: userGlobal!.phone, storeId: store!.uid, storeName: store!.name, ownerId: store!.ownerId, hasDelivered: false,confirmationStatus: 1,comment: "")
            stockSuccess = PurchaseServices.instance.confirmPurchase(receipt: order)
 
 //            PurchaseServices.instance.confirmPurchase(receipt: order) { (isSuccess) in
@@ -66,7 +66,7 @@ class CartVC: UIViewController {
                 address = userGlobal!.address
             }
 
-            let order = Order(items: readyItems, date: Timestamp(), hasDeliveryTime: true, deliveryTime: deliveryTimeStamp, purchaserId: userGlobal!.uid, purchaserName: userGlobal!.name, purchaserAddress: address, storeId: store!.uid, storeName: store!.name, ownerId: store!.ownerId, hasDelivered: false,confirmationStatus: 1,comment: "")
+            let order = Order(items: readyItems, date: Timestamp(), hasDeliveryTime: true, deliveryTime: deliveryTimeStamp, purchaserId: userGlobal!.uid, purchaserName: userGlobal!.name, purchaserAddress: address,lat: userGlobal!.l[0], lng: userGlobal!.l[1], purchaserPhone: userGlobal!.phone, storeId: store!.uid, storeName: store!.name, ownerId: store!.ownerId, hasDelivered: false,confirmationStatus: 1,comment: "")
 
             readySuccess = PurchaseServices.instance.confirmPurchase(receipt: order)
 //            PurchaseServices.instance.confirmPurchase(receipt: order) { (isSuccess) in

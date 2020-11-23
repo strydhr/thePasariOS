@@ -9,6 +9,14 @@
 import UIKit
 
 class HistoryVC: UIViewController {
+    // First Timers
+    @IBOutlet weak var mainHintContainer: UIView!
+    @IBOutlet weak var hintBlinky: UIImageView!
+    @IBOutlet weak var firstHint: UIView!
+    
+    let defaults = UserDefaults.standard
+    //
+    
     @IBOutlet weak var historyTable: UITableView!
     
     var historyList = [ReceiptDocument]()
@@ -20,19 +28,20 @@ class HistoryVC: UIViewController {
         historyTable.dataSource = self
         historyTable.register(UINib(nibName: "receiptHeader", bundle: nil), forCellReuseIdentifier: "receiptHeader")
         
-        // Do any additional setup after loading the view.
+        mainHintContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(nextHint)))
+        
     }
     
+    
+    @objc func nextHint(){
 
-    /*
-    // MARK: - Navigation
+            firstHint.isHidden = true
+            mainHintContainer.isHidden = true
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+            defaults.set(true, forKey: "historyHintDone")
+            
+
     }
-    */
 
 }
 
@@ -41,7 +50,27 @@ extension HistoryVC{
         PurchaseServices.instance.listPastPurchases { (historylist) in
             self.historyList = historylist.sorted(by: {$0.receipt!.deliveryTime.dateValue().compare($1.receipt!.deliveryTime.dateValue()) == .orderedDescending})
             self.historyTable.reloadData()
+            let isFirstTime = UserDefaults.exist(key: "historyHintDone")
+            print(isFirstTime)
+            if isFirstTime == false{
+                if self.historyList.count > 0 {
+                    self.firstTimeHelper()
+                }
+                
+            }
         }
+    }
+    func firstTimeHelper(){
+        mainHintContainer.isHidden = false
+        firstHint.isHidden = false
+        
+        self.hintBlinky.alpha = 0
+        UIView.animate(withDuration: 1, delay: 0.0, options: [.curveLinear, .repeat, .autoreverse]) {
+            self.hintBlinky.alpha = 1
+        } completion: { (success) in
+            
+        }
+
     }
 }
 extension HistoryVC:UITableViewDelegate,UITableViewDataSource{

@@ -10,6 +10,17 @@ import UIKit
 import Firebase
 
 class OrdersVC: UIViewController {
+    //First Time
+    @IBOutlet weak var mainHintContainer: UIView!
+    @IBOutlet weak var firstHint: UIView!
+    @IBOutlet weak var firstBlinky: UIImageView!
+    @IBOutlet weak var secondHint: UIView!
+    @IBOutlet weak var secondBlinky: UIImageView!
+    
+    var page = 1
+    let defaults = UserDefaults.standard
+    //
+    
     var listener: ListenerRegistration?
     var listener2: ListenerRegistration?
     
@@ -26,6 +37,9 @@ class OrdersVC: UIViewController {
         orderTable.separatorStyle = .none
         orderTable.register(UINib(nibName: "orderHeader", bundle: nil), forCellReuseIdentifier: "orderHeader")
         
+        mainHintContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(nextHint)))
+       
+        
 
     }
     
@@ -38,6 +52,19 @@ class OrdersVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadDatas()
+    }
+    
+    @objc func nextHint(){
+        if page == 1{
+            firstHint.isHidden = true
+            secondHint.isHidden = false
+            page = 2
+        }else if page == 2{
+            secondHint.isHidden = true
+            mainHintContainer.isHidden = true
+            defaults.set(true, forKey: "orderHintDone")
+            
+        }
     }
 
 
@@ -61,6 +88,7 @@ extension OrdersVC:UITableViewDelegate,UITableViewDataSource{
         }
         if order?.confirmationStatus == 1{
             cell.confirmBtn.isHidden = true
+            cell.statusIcon.isHidden = true
         }else{
             cell.confirmBtn.isHidden = false
             if order?.confirmationStatus == 0{
@@ -71,13 +99,14 @@ extension OrdersVC:UITableViewDelegate,UITableViewDataSource{
                 
                 //
                 if let sentItem = receiptList.firstIndex(where: {$0.receipt?.orderId == orderDoc.documentId}){
+                    cell.statusIcon.isHidden = false
                     cell.confirmBtn.setTitle("Delivered", for: .normal)
                     
                 }else{
                     
                     cell.confirmBtn.setTitle("Confirmed", for: .normal)
                     cell.confirmBtn.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
-                    cell.statusIcon.isHidden = false
+                    cell.statusIcon.isHidden = true
                     cell.statusIcon.image = UIImage(named: "delivery")
                 }
                 //
@@ -112,6 +141,14 @@ extension OrdersVC{
         self.listener = OrderServices.instance.realtimeListUpdate2(requestComplete: { (orderlist) in
             self.ordersList = orderlist
             self.orderTable.reloadData()
+            let isFirstTime = UserDefaults.exist(key: "orderHintDone")
+            print(isFirstTime)
+            if isFirstTime == false{
+                if self.ordersList.count > 0 {
+                    self.firstTimeHelper()
+                }
+
+            }
         })
         
         self.listener2 = OrderServices.instance.realtimeDeliveryUpdate(requestComplete: { (receiptlist) in
@@ -120,6 +157,22 @@ extension OrdersVC{
             self.receiptList = receiptlist
             self.orderTable.reloadData()
         })
+    }
+    func firstTimeHelper(){
+        mainHintContainer.isHidden = false
+        firstHint.isHidden = false
+        secondHint.isHidden = true
+        page = 1
+        
+        self.firstBlinky.alpha = 0
+        self.secondBlinky.alpha = 0
+        UIView.animate(withDuration: 1, delay: 0.0, options: [.curveLinear, .repeat, .autoreverse]) {
+            self.secondBlinky.alpha = 1
+            self.firstBlinky.alpha = 1
+        } completion: { (success) in
+            
+        }
+
     }
 }
 

@@ -59,7 +59,8 @@
 		D270EC8824C6C42200C9B3A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D270EC8624C6C42200C9B3A7 /* Main.storyboard */; };
 		D270EC8A24C6C43900C9B3A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D270EC8924C6C43900C9B3A7 /* Assets.xcassets */; };
 		D270EC8D24C6C43900C9B3A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D270EC8B24C6C43900C9B3A7 /* LaunchScreen.storyboard */; };
-		D270EC9524C6C5AA00C9B3A7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D270EC9424C6C5AA00C9B3A7 /* GoogleService-Info.plist */; };
+		D28BE2D3256B8AA70006B51D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D28BE2D2256B8AA70006B51D /* GoogleService-Info.plist */; };
+		D28BE2FC256B93560006B51D /* NotificationServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28BE2FB256B93560006B51D /* NotificationServices.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -119,8 +120,10 @@
 		D270EC8924C6C43900C9B3A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D270EC8C24C6C43900C9B3A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D270EC8E24C6C43900C9B3A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D270EC9424C6C5AA00C9B3A7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D270EC9A24C6E90800C9B3A7 /* Santana.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Santana.ttf; sourceTree = "<group>"; };
+		D28BE2D2256B8AA70006B51D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D28BE2F9256B91D10006B51D /* ThePasar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ThePasar.entitlements; sourceTree = "<group>"; };
+		D28BE2FB256B93560006B51D /* NotificationServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationServices.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +161,7 @@
 		D24C4CBA24C7F3F3005F27E4 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				D28BE2FB256B93560006B51D /* NotificationServices.swift */,
 				D251FDFB24EBC0D5005B751F /* OrderServices.swift */,
 				D254C03124D1610100E7C69E /* StoreServices.swift */,
 				D24C4CBB24C7F409005F27E4 /* AuthServices.swift */,
@@ -206,6 +210,7 @@
 		D270EC7F24C6C42100C9B3A7 /* ThePasar */ = {
 			isa = PBXGroup;
 			children = (
+				D28BE2F9256B91D10006B51D /* ThePasar.entitlements */,
 				D24C4CBD24C8203C005F27E4 /* Utilities */,
 				D24C4CBA24C7F3F3005F27E4 /* Services */,
 				D24C4CB324C7F308005F27E4 /* Extension */,
@@ -219,7 +224,7 @@
 				D270EC8924C6C43900C9B3A7 /* Assets.xcassets */,
 				D270EC8B24C6C43900C9B3A7 /* LaunchScreen.storyboard */,
 				D270EC8E24C6C43900C9B3A7 /* Info.plist */,
-				D270EC9424C6C5AA00C9B3A7 /* GoogleService-Info.plist */,
+				D28BE2D2256B8AA70006B51D /* GoogleService-Info.plist */,
 			);
 			path = ThePasar;
 			sourceTree = "<group>";
@@ -357,7 +362,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D253969824D94629004665E3 /* cartCell.xib in Resources */,
-				D270EC9524C6C5AA00C9B3A7 /* GoogleService-Info.plist in Resources */,
 				D251FE0024EBD214005B751F /* rejectedCommentPopup.xib in Resources */,
 				D2506AE824D29A7100BF160B /* radiusSettingPopup.xib in Resources */,
 				D254C03624D164D100E7C69E /* storeCell.xib in Resources */,
@@ -371,6 +375,7 @@
 				D270EC8824C6C42200C9B3A7 /* Main.storyboard in Resources */,
 				D251711A251C8E340064A237 /* rejectedReasonPopup.xib in Resources */,
 				D2516465252F0A0800B4C16D /* lodgeComplaintPopup.xib in Resources */,
+				D28BE2D3256B8AA70006B51D /* GoogleService-Info.plist in Resources */,
 				D251FDFA24EBB4CD005B751F /* orderHeader.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -477,6 +482,7 @@
 				D254C02F24D1596100E7C69E /* Product.swift in Sources */,
 				D254C03224D1610100E7C69E /* StoreServices.swift in Sources */,
 				D253969724D94629004665E3 /* cartCell.swift in Sources */,
+				D28BE2FC256B93560006B51D /* NotificationServices.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -621,6 +627,7 @@
 			baseConfigurationReference = 366837CEE764D81C2E67E99C /* Pods-ThePasar.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ThePasar/ThePasar.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 93SA3SA2TF;
 				INFOPLIST_FILE = ThePasar/Info.plist;
@@ -632,7 +639,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Strydhr.ThePasar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -641,6 +648,7 @@
 			baseConfigurationReference = 3D64DD778F8A139DC76AE048 /* Pods-ThePasar.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ThePasar/ThePasar.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 93SA3SA2TF;
 				INFOPLIST_FILE = ThePasar/Info.plist;
@@ -652,7 +660,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Strydhr.ThePasar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

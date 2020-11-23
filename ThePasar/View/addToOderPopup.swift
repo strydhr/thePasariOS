@@ -16,6 +16,18 @@ protocol updateCartDelegate {
 }
 
 class addToOderPopup: UIViewController {
+    // First Timers
+    @IBOutlet weak var mainHintContainer: UIView!
+    @IBOutlet weak var firstHint: UIView!
+    @IBOutlet weak var secondHint: UIView!
+    @IBOutlet weak var secondHintBlinky: UIImageView!
+    
+    var page = 1
+    let defaults = UserDefaults.standard
+    //
+    
+    
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var productDescription: UILabel!
@@ -51,28 +63,49 @@ class addToOderPopup: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       
         loadDatas()
         initalSettings()
+        scrollView.isScrollEnabled = false
+        
+        mainHintContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(nextHint)))
+        
+        
     }
     
-           @objc func donePickingTime(){
-            breakfastBtn.isEnabled = true
-            lunchBtn.isEnabled = true
-            dinnerBtn.isEnabled = true
-            timeTF.resignFirstResponder()
-
-    //            timeTF.text = dateFormatter.string(from: timePicker.date)
-    //            time = timePicker.date
-    //
-    //
-    //            let fulldateFormat = DateFormatter()
-    //            fulldateFormat.locale = Locale(identifier: "en_US_POSIX")
-    //            fulldateFormat.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
-    //            print(fulldateFormat.string(from: timePicker.date))
-
-                
-                self.view.endEditing(true)
-            }
+    @objc func donePickingTime(){
+        breakfastBtn.isEnabled = true
+        lunchBtn.isEnabled = true
+        dinnerBtn.isEnabled = true
+        timeTF.resignFirstResponder()
+        
+        //            timeTF.text = dateFormatter.string(from: timePicker.date)
+        //            time = timePicker.date
+        //
+        //
+        //            let fulldateFormat = DateFormatter()
+        //            fulldateFormat.locale = Locale(identifier: "en_US_POSIX")
+        //            fulldateFormat.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+        //            print(fulldateFormat.string(from: timePicker.date))
+        
+        
+        self.view.endEditing(true)
+    }
+    
+    @objc func nextHint(){
+        if page == 1{
+            firstHint.isHidden = true
+            secondHint.isHidden = false
+            page = 2
+        }else if page == 2{
+//            secondHint.isHidden = true
+            mainHintContainer.isHidden = true
+        scrollView.isScrollEnabled = true
+            defaults.set(true, forKey: "addOrderHintDone")
+            
+        }
+    }
     
     @IBAction func breakfastBtnPressed(_ sender: UIButton) {
         bfastTimePicker()
@@ -160,6 +193,11 @@ extension addToOderPopup{
             mealsSeparatorView.isHidden = true
         }else{
             hasDeliveryTime = true
+            let isFirstTime = UserDefaults.exist(key: "addOrderHintDone")
+            print(isFirstTime)
+            if isFirstTime == false{
+                firstTimeHelper()
+            }
         }
         
         let calendar = Calendar.current
@@ -329,6 +367,20 @@ extension addToOderPopup{
             delegate?.updatedCart(items: items, hasDelivery: hasDeliveryTime, sendBy: deliveryTime)
             dismiss(animated: true, completion: nil)
         }
+    }
+    func firstTimeHelper(){
+        mainHintContainer.isHidden = false
+        firstHint.isHidden = false
+        secondHint.isHidden = true
+        page = 1
+        
+        self.secondHintBlinky.alpha = 0
+        UIView.animate(withDuration: 1, delay: 0.0, options: [.curveLinear, .repeat, .autoreverse]) {
+            self.secondHintBlinky.alpha = 1
+        } completion: { (success) in
+            
+        }
+
     }
 }
 extension addToOderPopup:UIPickerViewDelegate, UIPickerViewDataSource{
