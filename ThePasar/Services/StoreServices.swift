@@ -66,7 +66,7 @@ class StoreServices {
     func listMyStoreProducts(store:Store,requestComplete:@escaping(_ productList:[ProductDocument])->()){
         var productList = [ProductDocument]()
         
-        let dbRef = db.collection("product").whereField("sid", isEqualTo: store.uid)
+        let dbRef = db.collection("product").whereField("sid", isEqualTo: store.uid).whereField("isDisabled", isEqualTo: false)
         dbRef.getDocuments { (snapshot, error) in
             if error == nil{
                 guard let document = snapshot?.documents else {return}

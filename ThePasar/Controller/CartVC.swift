@@ -10,10 +10,14 @@ import UIKit
 import CodableFirebase
 import FirebaseFirestore
 import Firebase
+import GoogleMobileAds
 
 class CartVC: UIViewController {
     @IBOutlet weak var cartTable: UITableView!
     @IBOutlet weak var confrimBtn: UIButton!
+    
+    var interstitial:GADInterstitial!
+    var adId = "ca-app-pub-3940256099942544/4411468910"
     
     var store:Store?
     var cartList = [itemPurchasing]()
@@ -22,12 +26,24 @@ class CartVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(cartList.count)
+        interstitial = GADInterstitial(adUnitID: adId)
+        let request = GADRequest()
+        interstitial.load(request)
+//        confrimBtn.isHidden = true
         
         cartTable.register(UINib(nibName: "cartCell", bundle: nil), forCellReuseIdentifier: "cartCell")
         cartTable.delegate = self
         cartTable.dataSource = self
         cartTable.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            
+        }
+        
     }
     
     @IBAction func confirmBtnPressed(_ sender: UIButton) {
@@ -78,7 +94,16 @@ class CartVC: UIViewController {
         }
 //
         if readySuccess == true || stockSuccess == true{
-            self.navigationController?.popToRootViewController(animated: true)
+            if self.interstitial.isReady{
+//                self.confrimBtn.isHidden = false
+                self.interstitial.present(fromRootViewController: self)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    self.navigationController?.popToRootViewController(animated: true)
+                }
+            }else{
+                print("No Ads")
+            }
+            
         }
         
         

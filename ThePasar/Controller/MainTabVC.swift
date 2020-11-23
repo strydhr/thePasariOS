@@ -45,7 +45,7 @@ class MainTabVC: UIViewController {
             firstTimeHelper()
         }
         
-        gpsAuthorization()
+//        gpsAuthorization()
         
         mainContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(nextHint)))
         
@@ -90,12 +90,12 @@ class MainTabVC: UIViewController {
 }
 
 extension MainTabVC{
-    func gpsAuthorization(){
-        CLLManager.delegate = self
-        CLLManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-        CLLManager.requestWhenInUseAuthorization()
-        CLLManager.startUpdatingLocation()
-    }
+//    func gpsAuthorization(){
+//        CLLManager.delegate = self
+//        CLLManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+//        CLLManager.requestWhenInUseAuthorization()
+//        CLLManager.startUpdatingLocation()
+//    }
     
     func getStoreWithinLocation(radius:Double){
         let currentLocation = CLLocation(latitude: (userGlobal?.l[0])!, longitude: (userGlobal?.l[1])!)
@@ -124,17 +124,17 @@ extension MainTabVC{
     }
 }
 
-extension MainTabVC: CLLocationManagerDelegate{
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.first{
-            print("updating...")
-            CLLManager.stopUpdatingLocation()
-        }
-        
-        
-        
-    }
-}
+//extension MainTabVC: CLLocationManagerDelegate{
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        if let location = locations.first{
+//            print("updating...")
+//            CLLManager.stopUpdatingLocation()
+//        }
+//
+//
+//
+//    }
+//}
 
 extension MainTabVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
