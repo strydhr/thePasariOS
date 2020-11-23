@@ -62,6 +62,13 @@ class AuthServices {
             }
         }
     }
+    func updateUserNumber(newNumber:String,requestComplete:@escaping(_ status: Bool)->()){
+        db.collection("User").document(userGlobal!.uid).updateData(["phone":newNumber]){(error) in
+            if error == nil{
+                requestComplete(true)
+            }
+        }
+    }
 }
 
 

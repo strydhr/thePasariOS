@@ -31,7 +31,7 @@ class ProfileVC: UIViewController {
 }
 extension ProfileVC:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -51,10 +51,15 @@ extension ProfileVC:UITableViewDelegate,UITableViewDataSource{
             }
             cell.contentLabel.text = add
             cell.editBtn.isHidden = false
+            cell.isAddress = true
             cell.delegate = self
         }else if indexPath.row == 2{
-            cell.contentLabel.text = "Enable Hints"
+            cell.contentLabel.text = userGlobal?.phone
+            cell.editBtn.isHidden = false
+            cell.delegate = self
         }else if indexPath.row == 3{
+            cell.contentLabel.text = "Enable Hints"
+        }else if indexPath.row == 4{
             cell.contentLabel.text = "Log Out"
         }
         
@@ -69,12 +74,12 @@ extension ProfileVC:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         switch indexPath.row {
-        case 2:
+        case 3:
             let domain = Bundle.main.bundleIdentifier
             defaults.removePersistentDomain(forName: domain!)
             defaults.synchronize()
 //            UserDefaults.clear()
-        case 3:
+        case 4:
             let logOutPopUP = UIAlertController(title: "Logout?", message: "Are you sure you want to log out?", preferredStyle: .alert)
             logOutPopUP.addAction(UIAlertAction(title: "Logout", style: .default, handler: { (buttonTapped) in
                 do{
@@ -106,6 +111,28 @@ extension ProfileVC:UITableViewDelegate,UITableViewDataSource{
 }
 
 extension ProfileVC:editProfileDetailsDelegate,doneUpdateProfileDelegate{
+    func editNumber(user: User) {
+        var phone:UITextField!
+        let alert = UIAlertController(title: "Change Number", message: "", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let saveAction = UIAlertAction(title: "Save", style: .default) { (action) in
+            userGlobal?.phone = phone.text!
+            AuthServices.instance.updateUserNumber(newNumber: phone.text!) { (isSuccess) in
+                if isSuccess{
+                    self.profileTable.reloadData()
+                }
+            }
+        }
+        alert.addAction(cancelAction)
+        alert.addAction(saveAction)
+        alert.addTextField { (tf) in
+            tf.placeholder = "Phone Number"
+            tf.keyboardType = .phonePad
+            phone = tf
+        }
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func updatedProfile(user: User) {
         profileTable.reloadData()
     }

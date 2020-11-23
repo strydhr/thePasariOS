@@ -10,6 +10,7 @@ import UIKit
 
 protocol editProfileDetailsDelegate {
     func editDetails(user:User)
+    func editNumber(user:User)
 }
 
 class profileCell: UITableViewCell {
@@ -18,6 +19,7 @@ class profileCell: UITableViewCell {
     @IBOutlet weak var editBtn: UIImageView!
     
     var delegate:editProfileDetailsDelegate?
+    var isAddress = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,7 +32,11 @@ class profileCell: UITableViewCell {
     }
     
     @objc func editBtnPressed(){
-        delegate?.editDetails(user: userGlobal!)
+        if isAddress{
+            delegate?.editDetails(user: userGlobal!)
+        }else{
+            delegate?.editNumber(user: userGlobal!)
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

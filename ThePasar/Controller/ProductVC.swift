@@ -62,6 +62,9 @@ extension ProductVC: UITableViewDelegate, UITableViewDataSource{
         cell.productName.text = product?.name
         cell.productPrice.text = "RM" + String(format: "%.2f", product!.price)
         cell.productDetails.text = product?.details
+        if product?.count == 0 && product?.type != "Pastry"{
+            cell.outOfStockView.isHidden = false
+        }
         
         return cell
     }
