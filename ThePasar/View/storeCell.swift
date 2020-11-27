@@ -14,6 +14,8 @@ class storeCell: UITableViewCell {
     @IBOutlet weak var storeType: UILabel!
     @IBOutlet weak var storeAddress: UILabel!
     
+    @IBOutlet weak var statusContainer: UIView!
+    @IBOutlet weak var statusLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

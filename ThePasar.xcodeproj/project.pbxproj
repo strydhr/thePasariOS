@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		89C8067A15F20885617AB314 /* Pods_ThePasar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849F19812C1577C01AC9A928 /* Pods_ThePasar.framework */; };
+		D234CB93256E479D0046EB83 /* PasswordResetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D234CB92256E479D0046EB83 /* PasswordResetVC.swift */; };
 		D24A90E824C965C800BC726F /* SignupProfileImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24A90E724C965C800BC726F /* SignupProfileImageVC.swift */; };
 		D24C4CB124C7F094005F27E4 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24C4CAF24C7F094005F27E4 /* SignUpVC.swift */; };
 		D24C4CB224C7F094005F27E4 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24C4CB024C7F094005F27E4 /* LoginVC.swift */; };
@@ -29,6 +30,7 @@
 		D2508C0A2522166C006E1178 /* profileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2508C082522166C006E1178 /* profileCell.xib */; };
 		D250EB3025231D45000FBB8C /* updateAddressPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D250EB2E25231D45000FBB8C /* updateAddressPopup.swift */; };
 		D250EB3125231D45000FBB8C /* updateAddressPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = D250EB2F25231D45000FBB8C /* updateAddressPopup.xib */; };
+		D25134342570E6D00051A319 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D25134332570E6D00051A319 /* GoogleService-Info.plist */; };
 		D2516458252EEB3B00B4C16D /* HistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2516457252EEB3B00B4C16D /* HistoryVC.swift */; };
 		D251645C252EFF2B00B4C16D /* receiptHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = D251645A252EFF2A00B4C16D /* receiptHeader.xib */; };
 		D251645D252EFF2B00B4C16D /* receiptHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D251645B252EFF2B00B4C16D /* receiptHeader.swift */; };
@@ -59,7 +61,6 @@
 		D270EC8824C6C42200C9B3A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D270EC8624C6C42200C9B3A7 /* Main.storyboard */; };
 		D270EC8A24C6C43900C9B3A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D270EC8924C6C43900C9B3A7 /* Assets.xcassets */; };
 		D270EC8D24C6C43900C9B3A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D270EC8B24C6C43900C9B3A7 /* LaunchScreen.storyboard */; };
-		D28BE2D3256B8AA70006B51D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D28BE2D2256B8AA70006B51D /* GoogleService-Info.plist */; };
 		D28BE2FC256B93560006B51D /* NotificationServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28BE2FB256B93560006B51D /* NotificationServices.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		366837CEE764D81C2E67E99C /* Pods-ThePasar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThePasar.debug.xcconfig"; path = "Target Support Files/Pods-ThePasar/Pods-ThePasar.debug.xcconfig"; sourceTree = "<group>"; };
 		3D64DD778F8A139DC76AE048 /* Pods-ThePasar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThePasar.release.xcconfig"; path = "Target Support Files/Pods-ThePasar/Pods-ThePasar.release.xcconfig"; sourceTree = "<group>"; };
 		849F19812C1577C01AC9A928 /* Pods_ThePasar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ThePasar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D234CB92256E479D0046EB83 /* PasswordResetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetVC.swift; sourceTree = "<group>"; };
 		D24A90E724C965C800BC726F /* SignupProfileImageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupProfileImageVC.swift; sourceTree = "<group>"; };
 		D24C4CAF24C7F094005F27E4 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		D24C4CB024C7F094005F27E4 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 		D2508C082522166C006E1178 /* profileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = profileCell.xib; sourceTree = "<group>"; };
 		D250EB2E25231D45000FBB8C /* updateAddressPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = updateAddressPopup.swift; sourceTree = "<group>"; };
 		D250EB2F25231D45000FBB8C /* updateAddressPopup.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = updateAddressPopup.xib; sourceTree = "<group>"; };
+		D25134332570E6D00051A319 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D2516457252EEB3B00B4C16D /* HistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryVC.swift; sourceTree = "<group>"; };
 		D251645A252EFF2A00B4C16D /* receiptHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = receiptHeader.xib; sourceTree = "<group>"; };
 		D251645B252EFF2B00B4C16D /* receiptHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = receiptHeader.swift; sourceTree = "<group>"; };
@@ -121,7 +124,6 @@
 		D270EC8C24C6C43900C9B3A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D270EC8E24C6C43900C9B3A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D270EC9A24C6E90800C9B3A7 /* Santana.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Santana.ttf; sourceTree = "<group>"; };
-		D28BE2D2256B8AA70006B51D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D28BE2F9256B91D10006B51D /* ThePasar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ThePasar.entitlements; sourceTree = "<group>"; };
 		D28BE2FB256B93560006B51D /* NotificationServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationServices.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -185,6 +187,7 @@
 				D24C4CB024C7F094005F27E4 /* LoginVC.swift */,
 				D24C4CAF24C7F094005F27E4 /* SignUpVC.swift */,
 				D24A90E724C965C800BC726F /* SignupProfileImageVC.swift */,
+				D234CB92256E479D0046EB83 /* PasswordResetVC.swift */,
 			);
 			path = AccountVC;
 			sourceTree = "<group>";
@@ -224,7 +227,7 @@
 				D270EC8924C6C43900C9B3A7 /* Assets.xcassets */,
 				D270EC8B24C6C43900C9B3A7 /* LaunchScreen.storyboard */,
 				D270EC8E24C6C43900C9B3A7 /* Info.plist */,
-				D28BE2D2256B8AA70006B51D /* GoogleService-Info.plist */,
+				D25134332570E6D00051A319 /* GoogleService-Info.plist */,
 			);
 			path = ThePasar;
 			sourceTree = "<group>";
@@ -375,7 +378,7 @@
 				D270EC8824C6C42200C9B3A7 /* Main.storyboard in Resources */,
 				D251711A251C8E340064A237 /* rejectedReasonPopup.xib in Resources */,
 				D2516465252F0A0800B4C16D /* lodgeComplaintPopup.xib in Resources */,
-				D28BE2D3256B8AA70006B51D /* GoogleService-Info.plist in Resources */,
+				D25134342570E6D00051A319 /* GoogleService-Info.plist in Resources */,
 				D251FDFA24EBB4CD005B751F /* orderHeader.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -475,6 +478,7 @@
 				D251645D252EFF2B00B4C16D /* receiptHeader.swift in Sources */,
 				D254C03524D164D100E7C69E /* storeCell.swift in Sources */,
 				D24C4CB224C7F094005F27E4 /* LoginVC.swift in Sources */,
+				D234CB93256E479D0046EB83 /* PasswordResetVC.swift in Sources */,
 				D254C02C24D14E7500E7C69E /* GeoHash.swift in Sources */,
 				D251FDF924EBB4CD005B751F /* orderHeader.swift in Sources */,
 				D2506AE724D29A7100BF160B /* radiusSettingPopup.swift in Sources */,

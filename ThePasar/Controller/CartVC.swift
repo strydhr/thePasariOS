@@ -11,13 +11,14 @@ import CodableFirebase
 import FirebaseFirestore
 import Firebase
 import GoogleMobileAds
+import CoreLocation
 
 class CartVC: UIViewController {
     @IBOutlet weak var cartTable: UITableView!
     @IBOutlet weak var confrimBtn: UIButton!
     
     var interstitial:GADInterstitial!
-    var adId = "ca-app-pub-3940256099942544/4411468910"
+    var adId = "ca-app-pub-1330351136644118~5969026295"
     
     var store:Store?
     var cartList = [itemPurchasing]()
@@ -37,14 +38,7 @@ class CartVC: UIViewController {
         cartTable.reloadData()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            
-        }
-        
-    }
     
     @IBAction func confirmBtnPressed(_ sender: UIButton) {
         let stockItems = cartList.filter({$0.hasDeliveryTime == false})
@@ -62,7 +56,7 @@ class CartVC: UIViewController {
                 address = userGlobal!.address
             }
 
-            let order = Order(items: stockItems, date: Timestamp(), hasDeliveryTime: false, deliveryTime: deliveryTimeStamp, purchaserId: userGlobal!.uid, purchaserName: userGlobal!.name, purchaserAddress: address,lat: userGlobal!.l[0], lng: userGlobal!.l[1], purchaserPhone: userGlobal!.phone, storeId: store!.uid, storeName: store!.name, ownerId: store!.ownerId, hasDelivered: false,confirmationStatus: 1,comment: "")
+            let order = Order(items: stockItems, date: Timestamp(), hasDeliveryTime: false, deliveryTime: deliveryTimeStamp, purchaserId: userGlobal!.uid, purchaserName: userGlobal!.name, purchaserAddress: address,lat: userGlobal!.l[0], lng: userGlobal!.l[1], purchaserPhone: userGlobal!.phone, purchaserDeviceToken: (store?.deviceToken)!, storeId: store!.uid, storeName: store!.name, ownerId: store!.ownerId, hasDelivered: false,confirmationStatus: 1,comment: "")
            stockSuccess = PurchaseServices.instance.confirmPurchase(receipt: order)
 
 //            PurchaseServices.instance.confirmPurchase(receipt: order) { (isSuccess) in
@@ -82,7 +76,7 @@ class CartVC: UIViewController {
                 address = userGlobal!.address
             }
 
-            let order = Order(items: readyItems, date: Timestamp(), hasDeliveryTime: true, deliveryTime: deliveryTimeStamp, purchaserId: userGlobal!.uid, purchaserName: userGlobal!.name, purchaserAddress: address,lat: userGlobal!.l[0], lng: userGlobal!.l[1], purchaserPhone: userGlobal!.phone, storeId: store!.uid, storeName: store!.name, ownerId: store!.ownerId, hasDelivered: false,confirmationStatus: 1,comment: "")
+            let order = Order(items: readyItems, date: Timestamp(), hasDeliveryTime: true, deliveryTime: deliveryTimeStamp, purchaserId: userGlobal!.uid, purchaserName: userGlobal!.name, purchaserAddress: address,lat: userGlobal!.l[0], lng: userGlobal!.l[1], purchaserPhone: userGlobal!.phone, purchaserDeviceToken: (store?.deviceToken)!, storeId: store!.uid, storeName: store!.name, ownerId: store!.ownerId, hasDelivered: false,confirmationStatus: 1,comment: "")
 
             readySuccess = PurchaseServices.instance.confirmPurchase(receipt: order)
 //            PurchaseServices.instance.confirmPurchase(receipt: order) { (isSuccess) in
@@ -92,9 +86,13 @@ class CartVC: UIViewController {
 //                }
 //            }
         }
-//
+
         if readySuccess == true || stockSuccess == true{
             if self.interstitial.isReady{
+                let coor1 = CLLocation(latitude: (store?.l[0])!, longitude: (store?.l[1])!)
+                let coor2 = CLLocation(latitude: userGlobal!.l[0], longitude: userGlobal!.l[1])
+                let dist = String(format: "%0.2f", coor1.distance(from: coor2)/1000)
+                NotificationServices.instance.sendNotification(deviceToken: (store?.deviceToken)!, title: "New Order", body: "from \((dist)) Km away")
 //                self.confrimBtn.isHidden = false
                 self.interstitial.present(fromRootViewController: self)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {

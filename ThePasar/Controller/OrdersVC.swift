@@ -148,6 +148,13 @@ extension OrdersVC{
                     self.firstTimeHelper()
                 }
 
+            }else{
+                let hintEnable = self.defaults.bool(forKey: "orderHintDone")
+                if hintEnable == false{
+                    if self.ordersList.count > 0 {
+                        self.firstTimeHelper()
+                    }
+                }
             }
         })
         

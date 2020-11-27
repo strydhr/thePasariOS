@@ -70,6 +70,7 @@ class Order: Codable{
     var purchaserAddress:String
     var purchaserCoor:[Double]
     var purchaserPhone:String
+    var purchaserDeviceToken:String
     var storeId:String
     var storeName:String
     var ownerId:String
@@ -77,7 +78,7 @@ class Order: Codable{
     var confirmationStatus:Int
     var comment:String
     
-    init(items:[itemPurchasing],date:Timestamp,hasDeliveryTime:Bool,deliveryTime:Timestamp,purchaserId:String,purchaserName:String,purchaserAddress:String,lat:Double,lng:Double,purchaserPhone:String,storeId:String,storeName:String,ownerId:String,hasDelivered:Bool,confirmationStatus:Int,comment:String) {
+    init(items:[itemPurchasing],date:Timestamp,hasDeliveryTime:Bool,deliveryTime:Timestamp,purchaserId:String,purchaserName:String,purchaserAddress:String,lat:Double,lng:Double,purchaserPhone:String,purchaserDeviceToken:String,storeId:String,storeName:String,ownerId:String,hasDelivered:Bool,confirmationStatus:Int,comment:String) {
         self.items = items
         self.date = date
         self.hasDeliveryTime = hasDeliveryTime
@@ -87,6 +88,7 @@ class Order: Codable{
         self.purchaserAddress = purchaserAddress
         self.purchaserCoor = [lat,lng]
         self.purchaserPhone = purchaserPhone
+        self.purchaserDeviceToken = purchaserDeviceToken
         self.storeId = storeId
         self.storeName = storeName
         self.ownerId = ownerId
@@ -111,6 +113,7 @@ class Receipts: Codable{
     var purchaserName:String
     var purchaserAddress:String
     var purchaserPhone:String
+    var purchaserDeviceToken:String
     var storeId:String
     var storeName:String
     var ownerId:String
@@ -118,7 +121,7 @@ class Receipts: Codable{
     var caseClosed:Bool
     var orderId:String
     
-    init(items:[itemPurchasing],date:Timestamp,hasDeliveryTime:Bool,deliveryTime:Timestamp,purchaserId:String,purchaserName:String,purchaserAddress:String,purchaserPhone:String,storeId:String,storeName:String,ownerId:String,hasDelivered:Bool,caseClosed:Bool,orderId:String) {
+    init(items:[itemPurchasing],date:Timestamp,hasDeliveryTime:Bool,deliveryTime:Timestamp,purchaserId:String,purchaserName:String,purchaserAddress:String,purchaserPhone:String,purchaserDeviceToken:String,storeId:String,storeName:String,ownerId:String,hasDelivered:Bool,caseClosed:Bool,orderId:String) {
         self.items = items
         self.date = date
         self.hasDeliveryTime = hasDeliveryTime
@@ -127,6 +130,7 @@ class Receipts: Codable{
         self.purchaserName = purchaserName
         self.purchaserAddress = purchaserAddress
         self.purchaserPhone = purchaserPhone
+        self.purchaserDeviceToken = purchaserDeviceToken
         self.storeId = storeId
         self.storeName = storeName
         self.ownerId = ownerId

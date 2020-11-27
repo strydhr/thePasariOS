@@ -25,6 +25,17 @@ class AuthServices {
             }
         }
     }
+    
+    func resetPassword(email:String,requestComplete:@escaping(_ status:Bool,_ error: Error?)->()){
+        Auth.auth().sendPasswordReset(withEmail: email) { (error) in
+            if error == nil{
+                requestComplete(true,nil)
+            }else{
+                requestComplete(false,error!)
+            }
+        }
+    }
+    
     func addUserToDatabase(name:String,address:String,unit:String,lat:Double,lng:Double,geohash:String,profileImage:String,requestComplete:@escaping(_ status: Bool)->()){
         
         let user = User(uid: Auth.auth().currentUser!.uid, name: name, phone: "", address: address, unitNumber: unit, lat: lat, lng: lng, g: geohash, profileImage: profileImage, isActivated: true, isActive: true)
@@ -68,6 +79,18 @@ class AuthServices {
                 requestComplete(true)
             }
         }
+    }
+    func updateDeviceToken(){
+        InstanceID.instanceID().instanceID { (result, error) in
+            if error == nil{
+                let token = result?.token
+                    db.collection("User").document(Auth.auth().currentUser!.uid).updateData(["deviceToken":token!])
+
+                
+                
+            }
+        }
+        
     }
 }
 

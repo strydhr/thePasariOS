@@ -194,9 +194,15 @@ extension addToOderPopup{
         }else{
             hasDeliveryTime = true
             let isFirstTime = UserDefaults.exist(key: "addOrderHintDone")
-            print(isFirstTime)
             if isFirstTime == false{
                 firstTimeHelper()
+            }else{
+                let hintEnable = self.defaults.bool(forKey: "addOrderHintDone")
+                if hintEnable == false{
+                    
+                    self.firstTimeHelper()
+                    
+                }
             }
         }
         

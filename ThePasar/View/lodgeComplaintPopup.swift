@@ -52,7 +52,7 @@ extension lodgeComplaintPopup{
         }else{
             ComplaintServices.instance.lodgeComplaint(receipt: receipt!, complaint: complaintStr) { (isSuccess) in
                 if isSuccess{
-                    
+                    NotificationServices.instance.sendNotification(deviceToken: (self.receipt?.receipt!.purchaserDeviceToken)!, title: "Complaint with order", body: "For item delivered on \((self.receipt?.receipt?.deliveryTime.dateValue())!)")
                     self.delegate?.showComplaintComfirmation(status: true)
                     self.dismiss(animated: true, completion: nil)
                 }

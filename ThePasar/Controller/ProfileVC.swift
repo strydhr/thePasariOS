@@ -75,10 +75,16 @@ extension ProfileVC:UITableViewDelegate,UITableViewDataSource{
         tableView.deselectRow(at: indexPath, animated: true)
         switch indexPath.row {
         case 3:
-            let domain = Bundle.main.bundleIdentifier
-            defaults.removePersistentDomain(forName: domain!)
-            defaults.synchronize()
+//            let domain = Bundle.main.bundleIdentifier
+//            defaults.removePersistentDomain(forName: domain!)
+//            defaults.synchronize()
 //            UserDefaults.clear()
+//            let orderHint = defaults.string(forKey: "historyHintDone")
+            defaults.setValue(false, forKey: "historyHintDone")
+            defaults.setValue(false, forKey: "orderHintDone")
+            defaults.setValue(false, forKey: "mainTabHintDone")
+            
+
         case 4:
             let logOutPopUP = UIAlertController(title: "Logout?", message: "Are you sure you want to log out?", preferredStyle: .alert)
             logOutPopUP.addAction(UIAlertAction(title: "Logout", style: .default, handler: { (buttonTapped) in

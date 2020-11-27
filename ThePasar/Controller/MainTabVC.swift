@@ -39,11 +39,7 @@ class MainTabVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let isFirstTime = UserDefaults.exist(key: "mainTabHintDone")
-        print(isFirstTime)
-        if isFirstTime == false{
-            firstTimeHelper()
-        }
+       
         
 //        gpsAuthorization()
         
@@ -58,6 +54,20 @@ class MainTabVC: UIViewController {
         
         getStoreWithinLocation(radius: 2)
         
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let isFirstTime = UserDefaults.exist(key: "mainTabHintDone")
+        print(isFirstTime)
+        if isFirstTime == false{
+            firstTimeHelper()
+        }else{
+            let hintEnable = self.defaults.bool(forKey: "mainTabHintDone")
+            if hintEnable == false{
+                    self.firstTimeHelper()
+
+            }
+        }
     }
     
 
@@ -102,6 +112,7 @@ extension MainTabVC{
         currentGeopoint = GeoPoint.geopointWithLocation(location: currentLocation)
         StoreServices.instance.geoSearchStore(currentLocation: self.currentGeopoint!, radiusSetting: radius) { (storelist) in
             self.storeList = storelist
+            self.storeList.sort(by: {!($0.store?.isClosed)! && (($1.store?.isClosed) != nil)})
             self.storeTable.reloadData()
         }
     }
@@ -155,6 +166,14 @@ extension MainTabVC: UITableViewDelegate, UITableViewDataSource{
         
         cell.storeAddress.numberOfLines = 0
         cell.storeAddress.text = store?.location
+        
+        if store?.isClosed == true{
+            cell.statusContainer.isHidden = false
+            cell.statusLabel.isHidden  = false
+        }else{
+            cell.statusContainer.isHidden = true
+            cell.statusLabel.isHidden  = true
+        }
         
         return cell
     }

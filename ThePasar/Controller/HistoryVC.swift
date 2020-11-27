@@ -32,6 +32,25 @@ class HistoryVC: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let isFirstTime = UserDefaults.exist(key: "historyHintDone")
+        print(isFirstTime)
+        if isFirstTime == false{
+            if self.historyList.count > 0 {
+                self.firstTimeHelper()
+            }
+            
+        }else{
+            let hintEnable = self.defaults.bool(forKey: "historyHintDone")
+            if hintEnable == false{
+                if self.historyList.count > 0 {
+                    self.firstTimeHelper()
+                }
+            }
+        }
+    }
+    
     
     @objc func nextHint(){
 
@@ -57,6 +76,13 @@ extension HistoryVC{
                     self.firstTimeHelper()
                 }
                 
+            }else{
+                let hintEnable = self.defaults.bool(forKey: "historyHintDone")
+                if hintEnable == false{
+                    if self.historyList.count > 0 {
+                        self.firstTimeHelper()
+                    }
+                }
             }
         }
     }
