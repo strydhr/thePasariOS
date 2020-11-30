@@ -10,6 +10,7 @@ import UIKit
 import GooglePlaces
 import Firebase
 import FirebaseAuth
+import CodableFirebase
 import SVProgressHUD
 
 class SignupProfileImageVC: UIViewController {
@@ -23,7 +24,7 @@ class SignupProfileImageVC: UIViewController {
     @IBOutlet weak var proceedBtn: UIButton!
     
     var fullname:String?
-    var address:String?
+    var addressFormat:String?
     var unitNo:String?
     var selectedImage: UIImage?
     var isProfilePicSet = false
@@ -95,7 +96,7 @@ class SignupProfileImageVC: UIViewController {
     }
     
     @IBAction func proceedBtnPressed(_ sender: UIButton) {
-        errorHandler(address: address!, unitNumber: unitNumberTF.text!)
+        errorHandler(address: addressTF.text!, unitNumber: unitNumberTF.text!)
     }
     /*
     // MARK: - Navigation
@@ -175,7 +176,7 @@ extension SignupProfileImageVC:UITableViewDelegate,UITableViewDataSource{
 extension SignupProfileImageVC:GMSAutocompleteViewControllerDelegate{
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         addressTF.text = place.name
-        address = place.formattedAddress
+        addressFormat = place.formattedAddress
         latitude = place.coordinate.latitude
         longitude = place.coordinate.longitude
         geoHash = place.coordinate.geohash(length: 10)
@@ -236,22 +237,34 @@ extension SignupProfileImageVC{
 
     func errorHandler(address:String,unitNumber:String){
         if address.isEmpty{
-            
+            let alert = UIAlertController(title: "Error", message: "You need to fill up your address", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
         }else{
             if unitNumber.isEmpty{
                 unitNo = ""
             }
             SVProgressHUD.show()
             uploadImages(image: profileImage.image!, imageName: "profile") { (url) in
-                AuthServices.instance.addUserToDatabase(name: self.fullname!, address: address, unit: self.unitNo!,lat:self.latitude!,lng: self.longitude!,geohash: self.geoHash!, profileImage: url) { (isSuccess) in
+                AuthServices.instance.addUserToDatabase(name: self.fullname!, address: self.addressFormat!, unit: self.unitNo!,lat:self.latitude!,lng: self.longitude!,geohash: self.geoHash!, profileImage: url) { (isSuccess) in
                     if isSuccess{
                         let mainVC = self.storyboard?.instantiateViewController(withIdentifier: "loggedIn")
                         mainVC?.modalPresentationStyle = .fullScreen
                         SVProgressHUD.dismiss()
                         let defaults = UserDefaults.standard
                         defaults.set(true, forKey: "isFirstTime")
-//                        AuthServices.instance.updateDeviceToken(accType: accType!)
-                        self.present(mainVC!, animated: true, completion: nil)
+                        AuthServices.instance.updateDeviceToken()
+                        let userInfo = db.collection("User").document((Auth.auth().currentUser?.uid)!)
+                        userInfo.getDocument { (snapshot, err) in
+                            if err == nil{
+                                guard let snapShot = snapshot?.data() else {return}
+                                userGlobal = try! FirestoreDecoder().decode(User.self, from: snapShot )
+                                self.present(mainVC!, animated: true, completion: nil)
+                                
+                            }
+                        }
+                        
                     }
                 }
             }
