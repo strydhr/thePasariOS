@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		89C8067A15F20885617AB314 /* Pods_ThePasar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849F19812C1577C01AC9A928 /* Pods_ThePasar.framework */; };
+		D2232D6C25752A01008070A9 /* WalkthroughContentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2232D6B25752A01008070A9 /* WalkthroughContentVC.swift */; };
+		D2232D6F25752B8E008070A9 /* WalkthroughPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2232D6E25752B8E008070A9 /* WalkthroughPageVC.swift */; };
+		D2232D7225753091008070A9 /* WalkthroughVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2232D7125753091008070A9 /* WalkthroughVC.swift */; };
 		D234CB93256E479D0046EB83 /* PasswordResetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D234CB92256E479D0046EB83 /* PasswordResetVC.swift */; };
 		D24A90E824C965C800BC726F /* SignupProfileImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24A90E724C965C800BC726F /* SignupProfileImageVC.swift */; };
 		D24C4CB124C7F094005F27E4 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24C4CAF24C7F094005F27E4 /* SignUpVC.swift */; };
@@ -68,6 +71,9 @@
 		366837CEE764D81C2E67E99C /* Pods-ThePasar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThePasar.debug.xcconfig"; path = "Target Support Files/Pods-ThePasar/Pods-ThePasar.debug.xcconfig"; sourceTree = "<group>"; };
 		3D64DD778F8A139DC76AE048 /* Pods-ThePasar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThePasar.release.xcconfig"; path = "Target Support Files/Pods-ThePasar/Pods-ThePasar.release.xcconfig"; sourceTree = "<group>"; };
 		849F19812C1577C01AC9A928 /* Pods_ThePasar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ThePasar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2232D6B25752A01008070A9 /* WalkthroughContentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughContentVC.swift; sourceTree = "<group>"; };
+		D2232D6E25752B8E008070A9 /* WalkthroughPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughPageVC.swift; sourceTree = "<group>"; };
+		D2232D7125753091008070A9 /* WalkthroughVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughVC.swift; sourceTree = "<group>"; };
 		D234CB92256E479D0046EB83 /* PasswordResetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetVC.swift; sourceTree = "<group>"; };
 		D24A90E724C965C800BC726F /* SignupProfileImageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupProfileImageVC.swift; sourceTree = "<group>"; };
 		D24C4CAF24C7F094005F27E4 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
@@ -188,6 +194,9 @@
 				D24C4CAF24C7F094005F27E4 /* SignUpVC.swift */,
 				D24A90E724C965C800BC726F /* SignupProfileImageVC.swift */,
 				D234CB92256E479D0046EB83 /* PasswordResetVC.swift */,
+				D2232D6B25752A01008070A9 /* WalkthroughContentVC.swift */,
+				D2232D6E25752B8E008070A9 /* WalkthroughPageVC.swift */,
+				D2232D7125753091008070A9 /* WalkthroughVC.swift */,
 			);
 			path = AccountVC;
 			sourceTree = "<group>";
@@ -453,6 +462,7 @@
 				D25283AF24DA689A00325978 /* PurchaseServices.swift in Sources */,
 				D251FDF624EBB190005B751F /* OrdersVC.swift in Sources */,
 				D2506AE124D2764500BF160B /* productCell.swift in Sources */,
+				D2232D6C25752A01008070A9 /* WalkthroughContentVC.swift in Sources */,
 				D254C03024D1596100E7C69E /* Store.swift in Sources */,
 				D24EF9C924CA9FFC005937C5 /* User.swift in Sources */,
 				D24C4CB724C7F346005F27E4 /* RoundButton.swift in Sources */,
@@ -462,6 +472,7 @@
 				D2506AE424D2839D00BF160B /* ProductVC.swift in Sources */,
 				D251FDFF24EBD214005B751F /* rejectedCommentPopup.swift in Sources */,
 				D2506AEB24D2AE7000BF160B /* addToOderPopup.swift in Sources */,
+				D2232D7225753091008070A9 /* WalkthroughVC.swift in Sources */,
 				D2517119251C8E340064A237 /* rejectedReasonPopup.swift in Sources */,
 				D24C4CB924C7F346005F27E4 /* ImageCache.swift in Sources */,
 				D270EC8524C6C42100C9B3A7 /* ViewController.swift in Sources */,
@@ -487,6 +498,7 @@
 				D254C03224D1610100E7C69E /* StoreServices.swift in Sources */,
 				D253969724D94629004665E3 /* cartCell.swift in Sources */,
 				D28BE2FC256B93560006B51D /* NotificationServices.swift in Sources */,
+				D2232D6F25752B8E008070A9 /* WalkthroughPageVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
