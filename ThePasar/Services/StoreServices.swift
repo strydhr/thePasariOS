@@ -110,4 +110,30 @@ class StoreServices {
         })
     }
     
+    func listPreRegProducts(requestComplete:@escaping(_ productList:[ProductDocument])->()){
+        var productList = [ProductDocument]()
+        
+        let dbRef = db.collection("product").whereField("availability", isEqualTo: true).limit(to: 5)
+        dbRef.getDocuments { (snapshot, error) in
+            if error == nil{
+                guard let document = snapshot?.documents else {return}
+                if document.isEmpty{
+                    requestComplete(productList)
+                }else{
+                    for items in document{
+                        let docData = items.data()
+                        let product = try! FirestoreDecoder().decode(Product.self, from: docData)
+                        let productDoc = ProductDocument(documentId: items.documentID, product: product)
+                        productList.append(productDoc)
+
+                        
+                    }
+                    requestComplete(productList)
+                    
+                }
+            }
+        
+        }
+    }
+    
 }

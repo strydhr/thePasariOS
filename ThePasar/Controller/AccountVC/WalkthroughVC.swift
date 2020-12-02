@@ -19,8 +19,13 @@ class WalkthroughVC: UIViewController,WalkthroughPageVCDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        nextBtn.layer.cornerRadius = 10
+        nextBtn.layer.cornerRadius = 20
+        skipBtn.isHidden = true
         // Do any additional setup after loading the view.
+    }
+    
+    @objc func backgroundTapped(){
+        self.dismiss(animated: true, completion: nil)
     }
     
     func updateUI(){
@@ -48,8 +53,31 @@ class WalkthroughVC: UIViewController,WalkthroughPageVCDelegate {
             case 0...2:
                 walthroughPageVC?.forwardPage()
             case 3:
-                UserDefaults.standard.set(true, forKey: "seenWalkthrough")
-                dismiss(animated: true, completion: nil)
+                //
+                let registerPopuP = UIAlertController(title: "Register Account?", message: "Would you like to register now?", preferredStyle: .alert)
+                registerPopuP.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (buttonTapped) in
+   
+                    UserDefaults.standard.set(true, forKey: "seenWalkthrough")
+                    self.dismiss(animated: true, completion: nil)
+                    
+                }))
+                registerPopuP.addAction(UIAlertAction(title: "Peek at Products first", style: .default, handler: { (buttonTapped) in
+                    if let walkthroughVC = self.storyboard?.instantiateViewController(identifier: "ViewProductsVC")as? ViewProductsVC{
+                        walkthroughVC.modalPresentationStyle = .fullScreen
+                        self.present(walkthroughVC, animated: true, completion: nil)
+                    }
+                    
+                    
+                }))
+                present(registerPopuP, animated: true, completion:  {
+                    
+                    registerPopuP.view.superview?.isUserInteractionEnabled = true
+                    registerPopuP.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.backgroundTapped)))
+                })
+                //
+//                UserDefaults.standard.set(true, forKey: "seenWalkthrough")
+//                self.dismiss(animated: true, completion: nil)
+                
             default:
                 break
             }

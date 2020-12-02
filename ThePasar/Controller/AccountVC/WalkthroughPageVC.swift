@@ -16,8 +16,8 @@ class WalkthroughPageVC: UIPageViewController,UIPageViewControllerDataSource,UIP
 
     var walkthroughdelegate: WalkthroughPageVCDelegate?
     
-    var pageHeading = ["Undecided on Food?","Select on nearby Store","Easy to See Details","Notified Status"]
-    var subheading = ["Browse home cook food from neighbours or nearby communities","Stores are categories by food types for your convenience","All product details are clear and comprehensive","Receive notification of your food and payment method are what you agreed with the owner"]
+    var pageHeading = ["Having a craving?","Select a nearby kitchen","Picky about what you eat","Stay notified"]
+    var subheading = ["Order home cooked food right to your door step from neighbours and nearby communities","Satisfy that craving with selections from our easy to navigate food categories","Find out more about the ingredients in your food, so you know exactly what you're ordering","Receive real time notification about the status and delivery of your order"]
     var imgStrs = ["hint1","hint2","hint3","hint4"]
     var currentIndex = 0
 

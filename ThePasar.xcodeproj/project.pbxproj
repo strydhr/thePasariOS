@@ -11,6 +11,7 @@
 		D2232D6C25752A01008070A9 /* WalkthroughContentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2232D6B25752A01008070A9 /* WalkthroughContentVC.swift */; };
 		D2232D6F25752B8E008070A9 /* WalkthroughPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2232D6E25752B8E008070A9 /* WalkthroughPageVC.swift */; };
 		D2232D7225753091008070A9 /* WalkthroughVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2232D7125753091008070A9 /* WalkthroughVC.swift */; };
+		D22E99E12576309500183A20 /* ViewProductsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22E99E02576309500183A20 /* ViewProductsVC.swift */; };
 		D234CB93256E479D0046EB83 /* PasswordResetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D234CB92256E479D0046EB83 /* PasswordResetVC.swift */; };
 		D24A90E824C965C800BC726F /* SignupProfileImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24A90E724C965C800BC726F /* SignupProfileImageVC.swift */; };
 		D24C4CB124C7F094005F27E4 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24C4CAF24C7F094005F27E4 /* SignUpVC.swift */; };
@@ -74,6 +75,7 @@
 		D2232D6B25752A01008070A9 /* WalkthroughContentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughContentVC.swift; sourceTree = "<group>"; };
 		D2232D6E25752B8E008070A9 /* WalkthroughPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughPageVC.swift; sourceTree = "<group>"; };
 		D2232D7125753091008070A9 /* WalkthroughVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughVC.swift; sourceTree = "<group>"; };
+		D22E99E02576309500183A20 /* ViewProductsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProductsVC.swift; sourceTree = "<group>"; };
 		D234CB92256E479D0046EB83 /* PasswordResetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetVC.swift; sourceTree = "<group>"; };
 		D24A90E724C965C800BC726F /* SignupProfileImageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupProfileImageVC.swift; sourceTree = "<group>"; };
 		D24C4CAF24C7F094005F27E4 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
@@ -153,6 +155,14 @@
 				3D64DD778F8A139DC76AE048 /* Pods-ThePasar.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		D22E99DE25762D4B00183A20 /* Preregister */ = {
+			isa = PBXGroup;
+			children = (
+				D22E99E02576309500183A20 /* ViewProductsVC.swift */,
+			);
+			path = Preregister;
 			sourceTree = "<group>";
 		};
 		D24C4CB324C7F308005F27E4 /* Extension */ = {
@@ -244,6 +254,7 @@
 		D270EC9624C6CE9E00C9B3A7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D22E99DE25762D4B00183A20 /* Preregister */,
 				D2506ADC24D2755400BF160B /* AccountVC */,
 				D24EF9C624CA9792005937C5 /* MainTabVC.swift */,
 				D2506AE324D2839D00BF160B /* ProductVC.swift */,
@@ -463,6 +474,7 @@
 				D251FDF624EBB190005B751F /* OrdersVC.swift in Sources */,
 				D2506AE124D2764500BF160B /* productCell.swift in Sources */,
 				D2232D6C25752A01008070A9 /* WalkthroughContentVC.swift in Sources */,
+				D22E99E12576309500183A20 /* ViewProductsVC.swift in Sources */,
 				D254C03024D1596100E7C69E /* Store.swift in Sources */,
 				D24EF9C924CA9FFC005937C5 /* User.swift in Sources */,
 				D24C4CB724C7F346005F27E4 /* RoundButton.swift in Sources */,
@@ -645,7 +657,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ThePasar/ThePasar.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 93SA3SA2TF;
 				INFOPLIST_FILE = ThePasar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -653,7 +665,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Strydhr.ThePasar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -668,7 +680,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ThePasar/ThePasar.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 93SA3SA2TF;
 				INFOPLIST_FILE = ThePasar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -676,7 +688,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Strydhr.ThePasar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

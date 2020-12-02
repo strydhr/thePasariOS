@@ -18,7 +18,7 @@ class CartVC: UIViewController {
     @IBOutlet weak var confrimBtn: UIButton!
     
     var interstitial:GADInterstitial!
-    var adId = "ca-app-pub-1330351136644118~5969026295"
+    var adId = "ca-app-pub-1330351136644118/6799069840"
     
     var store:Store?
     var cartList = [itemPurchasing]()

@@ -54,10 +54,11 @@ class LoginVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         if UserDefaults.standard.bool(forKey: "seenWalkthrough"){
-            if let walkthroughVC = storyboard?.instantiateViewController(identifier: "WalkthroughVC")as? WalkthroughVC{
-                walkthroughVC.modalPresentationStyle = .fullScreen
-                present(walkthroughVC, animated: true, completion: nil)
-            }
+            return
+        }
+        if let walkthroughVC = storyboard?.instantiateViewController(identifier: "WalkthroughVC")as? WalkthroughVC{
+            walkthroughVC.modalPresentationStyle = .fullScreen
+            present(walkthroughVC, animated: true, completion: nil)
         }
         
     }
