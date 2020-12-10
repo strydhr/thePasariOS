@@ -87,7 +87,9 @@ class WalkthroughVC: UIViewController,WalkthroughPageVCDelegate {
     
     @IBAction func skipBtnPressed(_ sender: UIButton) {
         UserDefaults.standard.set(true, forKey: "seenWalkthrough")
-        dismiss(animated: true, completion: nil)
+        let walkthroughVC = self.storyboard?.instantiateViewController(identifier: "ViewProductsVC")as? ViewProductsVC
+        walkthroughVC!.modalPresentationStyle = .fullScreen
+        self.present(walkthroughVC!, animated: true, completion: nil)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

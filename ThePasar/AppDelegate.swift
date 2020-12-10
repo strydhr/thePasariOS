@@ -86,13 +86,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                             self.window?.rootViewController?.present(authVC, animated: true, completion: nil )
                         }else{
                             try! Auth.auth().signOut()
+                            
+                            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                            let preRegVC = storyboard.instantiateViewController(withIdentifier: "ViewProductsVC")
+                            preRegVC.modalPresentationStyle = .fullScreen
+                            self.window?.makeKeyAndVisible()
+                            
+                            self.window?.rootViewController?.present(preRegVC, animated: true, completion: nil )
                         }
                         
                     }
                 }
                 
                 
-            }        }
+            }else{
+//            //Head to prereg view
+            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let preRegVC = storyboard.instantiateViewController(withIdentifier: "ViewProductsVC")
+            preRegVC.modalPresentationStyle = .fullScreen
+            self.window?.makeKeyAndVisible()
+
+            self.window?.rootViewController?.present(preRegVC, animated: true, completion: nil )
+            }
+            
+            
+        }
         
         
         return true

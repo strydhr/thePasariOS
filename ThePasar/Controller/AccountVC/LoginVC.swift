@@ -27,6 +27,10 @@ class LoginVC: UIViewController {
     @IBOutlet weak var btmConstraint: NSLayoutConstraint!
     var btmHeight:CGFloat?
     
+    //FOR PREREG
+    @IBOutlet weak var backBtn: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
             fadeIn()
@@ -106,6 +110,11 @@ class LoginVC: UIViewController {
     @IBAction func signupBtnPressed(_ sender: UIButton) {
     }
     
+    @IBAction func backBtnPressed(_ sender: UIButton) {
+        let walkthroughVC = self.storyboard?.instantiateViewController(identifier: "ViewProductsVC")as? ViewProductsVC
+        walkthroughVC!.modalPresentationStyle = .fullScreen
+        self.present(walkthroughVC!, animated: true, completion: nil)
+    }
 }
 
 extension LoginVC{
@@ -173,6 +182,12 @@ extension LoginVC{
                                 self.present(authVC, animated: true, completion: nil)
                             }else{
                                 try! Auth.auth().signOut()
+                                self.loginBtn.isEnabled = true
+                                let alert = UIAlertController(title: "Error", message: "The enter email is for the Pasar Merchant App.", preferredStyle: .alert)
+                                let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                                alert.addAction(okAction)
+                                self.present(alert, animated: true, completion: nil)
+                                
                             }
                             
                         }
@@ -187,4 +202,7 @@ extension LoginVC{
             }
         }
     }
+    
+    
+    
 }

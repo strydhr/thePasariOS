@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 import Firebase
 
 class ViewProductsVC: UIViewController {
@@ -14,15 +15,23 @@ class ViewProductsVC: UIViewController {
     @IBOutlet weak var productTable: UITableView!
     
     var adId = "ca-app-pub-1330351136644118/2121027039"
-    
+//    var adId = "ca-app-pub-3940256099942544/2934735716"
     
     var productList = [ProductDocument]()
+    
+    //GPS Autorization
+//    let CLLManager = CLLocationManager()
+//    let cLLocationAuthStatus = CLLocationManager.authorizationStatus()
+//    var currentGeopoint:GeoPoint?
+//    var count = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         productTable.register(UINib(nibName: "productCell", bundle: nil), forCellReuseIdentifier: "productCell")
         productTable.delegate = self
         productTable.dataSource = self
+        
+//        gpsAuthorization()
         
         loadDatas()
         banner.adUnitID = adId
@@ -53,7 +62,7 @@ extension ViewProductsVC: UITableViewDelegate, UITableViewDataSource{
         cell.productImage.cacheImage(imageUrl: product!.profileImage)
         cell.productName.text = product?.name
         cell.productPrice.text = "RM" + String(format: "%.2f", product!.price)
-        cell.productDetails.text = product?.details
+        cell.productDetails.text = product?.type
         if product?.count == 0 && product?.type != "Pastry"{
             cell.outOfStockView.isHidden = false
         }
@@ -89,18 +98,44 @@ extension ViewProductsVC: UITableViewDelegate, UITableViewDataSource{
     }
     
 }
-extension ViewProductsVC{
+extension ViewProductsVC:CLLocationManagerDelegate{
+//    func gpsAuthorization(){
+//        CLLManager.delegate = self
+//        CLLManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+//        CLLManager.requestWhenInUseAuthorization()
+//
+//        CLLManager.startUpdatingLocation()
+//    }
+//
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        if let location = locations.first{
+//            print("updating...")
+//            count += 1
+//            if count == 1{
+//                let currentLocation = CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+//                currentGeopoint = GeoPoint.geopointWithLocation(location: currentLocation)
+//                CLLManager.stopUpdatingLocation()
+//            }
+//
+//            print(location.coordinate.latitude)
+//        }
+//
+//
+//
+//    }
+    
     func loadDatas(){
-        Auth.auth().signIn(withEmail: "anonymous@anonymous.com", password: "pohyee") { (res, err) in
+        
+//        Auth.auth().signIn(withEmail: "anonymous@anonymous.com", password: "pohyee") { (res, err) in
             StoreServices.instance.listPreRegProducts() { (productlist) in
                 self.productList = productlist
                 self.productTable.reloadData()
-            }
+//            }
         }
         
     }
     
-
+    
 }
 
 

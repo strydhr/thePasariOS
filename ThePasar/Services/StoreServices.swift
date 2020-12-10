@@ -113,7 +113,7 @@ class StoreServices {
     func listPreRegProducts(requestComplete:@escaping(_ productList:[ProductDocument])->()){
         var productList = [ProductDocument]()
         
-        let dbRef = db.collection("product").whereField("availability", isEqualTo: true).limit(to: 5)
+        let dbRef = db.collection("product").whereField("availability", isEqualTo: true)
         dbRef.getDocuments { (snapshot, error) in
             if error == nil{
                 guard let document = snapshot?.documents else {return}

@@ -19,6 +19,7 @@ class CartVC: UIViewController {
     
     var interstitial:GADInterstitial!
     var adId = "ca-app-pub-1330351136644118/6799069840"
+//    var adId = "ca-app-pub-1330351136sad644118/6799069840"
     
     var store:Store?
     var cartList = [itemPurchasing]()
@@ -31,6 +32,7 @@ class CartVC: UIViewController {
         let request = GADRequest()
         interstitial.load(request)
 //        confrimBtn.isHidden = true
+        totalButton()
         
         cartTable.register(UINib(nibName: "cartCell", bundle: nil), forCellReuseIdentifier: "cartCell")
         cartTable.delegate = self
@@ -100,6 +102,7 @@ class CartVC: UIViewController {
                 }
             }else{
                 print("No Ads")
+                self.navigationController?.popToRootViewController(animated: true)
             }
             
         }
@@ -127,5 +130,39 @@ extension CartVC: UITableViewDelegate,UITableViewDataSource{
         return 77
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let delete = deleteAction(at: indexPath)
+
+            return UISwipeActionsConfiguration(actions: [ delete])
+        
+        
+    }
     
+    func deleteAction(at indexPath:IndexPath) -> UIContextualAction {
+        let done = UIContextualAction(style: .normal, title: "Delete") { (action, view, completion) in
+            self.cartList.remove(at: indexPath.row)
+            self.cartTable.deleteRows(at: [indexPath], with: .automatic)
+            self.cartTable.reloadData()
+     
+            
+        }
+        
+        done.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+        
+        return done
+      }
+    
+}
+
+extension CartVC{
+    func totalButton(){
+        var total = 0.0
+        for item in cartList{
+            let price = item.productPrice * Double(item.itemCount)
+            total = total + price
+            
+        }
+        confrimBtn.setTitle("Confrm Total - RM\((String(format: "%.2f", total)))", for: .normal)
+    }
 }
