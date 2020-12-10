@@ -156,7 +156,9 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vx4-Ng-BAp">
                                                     <rect key="frame" x="0.0" y="0.0" width="41" height="34"/>
-                                                    <state key="normal" title="minus"/>
+                                                    <state key="normal" title="minus">
+                                                        <color key="titleColor" red="0.0" green="0.4592103958" blue="0.89129447939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
                                                     <connections>
                                                         <action selector="minusBtnPressed:" destination="-1" eventType="touchUpInside" id="6pm-gY-k7F"/>
                                                     </connections>
@@ -254,7 +256,7 @@
                                     </constraints>
                                 </view>
                                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xaZ-F7-DB5" userLabel="hintView">
-                                    <rect key="frame" x="0.0" y="1" width="404" height="1000"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="404" height="1000"/>
                                     <subviews>
                                         <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gv2-Hc-jyQ">
                                             <rect key="frame" x="0.0" y="0.0" width="404" height="1000"/>
