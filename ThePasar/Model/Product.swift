@@ -153,23 +153,32 @@ class Complaint: Codable{
     var purchaserId:String
     var purchaserName:String
     var purchaserAddress:String
+    var purchaserPhone:String
     var storeId:String
     var storeName:String
     var ownerId:String
     var receiptId:String
     var complaint:String
+    var isResolved:Bool
     
-    init(items:[itemPurchasing],date:Timestamp,deliveryTime:Timestamp,purchaserId:String,purchaserName:String,purchaserAddress:String,storeId:String,storeName:String,ownerId:String,receiptId:String,complaint:String) {
+    init(items:[itemPurchasing],date:Timestamp,deliveryTime:Timestamp,purchaserId:String,purchaserName:String,purchaserAddress:String,purchaserPhone:String,storeId:String,storeName:String,ownerId:String,receiptId:String,complaint:String,isResolved:Bool) {
         self.items = items
         self.date = date
         self.deliveryTime = deliveryTime
         self.purchaserId = purchaserId
         self.purchaserName = purchaserName
         self.purchaserAddress = purchaserAddress
+        self.purchaserPhone = purchaserPhone
         self.storeId = storeId
         self.storeName = storeName
         self.ownerId = ownerId
         self.receiptId = receiptId
         self.complaint = complaint
+        self.isResolved = isResolved
     }
+}
+
+struct ComplaintDocument {
+    var documentId:String?
+    var complaint:Complaint?
 }

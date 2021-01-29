@@ -108,6 +108,7 @@ extension MainTabVC{
 //    }
     
     func getStoreWithinLocation(radius:Double){
+        storeList.removeAll()
         let currentLocation = CLLocation(latitude: (userGlobal?.l[0])!, longitude: (userGlobal?.l[1])!)
         currentGeopoint = GeoPoint.geopointWithLocation(location: currentLocation)
         StoreServices.instance.geoSearchStore(currentLocation: self.currentGeopoint!, radiusSetting: radius) { (storelist) in
